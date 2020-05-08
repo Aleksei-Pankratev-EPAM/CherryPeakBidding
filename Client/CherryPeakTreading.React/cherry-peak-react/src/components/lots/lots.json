@@ -1,0 +1,20 @@
+[
+        {
+            "id": "1",
+            "urlToImage": "",
+            "title": "lot1",
+            "description": "description1"
+        },
+        {
+            "id": "2",
+            "urlToImage": "",
+            "title": "lot2",
+            "description": "description2"
+        },
+        {
+            "id": "3",
+            "urlToImage": "",
+            "title": "lot3",
+            "description": "description3"
+        }
+]
