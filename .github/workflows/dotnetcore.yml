@@ -1,0 +1,38 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install back-end dependencies
+      run: dotnet restore
+    - name: Build back-end
+      run: dotnet build --configuration Release --no-restore
+    - name: Back-end tests
+      run: dotnet test --no-restore --verbosity normal
+    - name: Install front-end dependencies
+      run: |
+        cd Client
+        yarn install
+    - name: Build front-end
+      run: |
+        cd Client
+        yarn build
+    - name: Front-end tests
+      run: |
+        cd Client
+        yarn test
+      
