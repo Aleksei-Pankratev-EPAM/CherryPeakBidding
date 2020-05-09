@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 class AddLot extends Component {
-    constructor(props) {
-      super(props);
-      
-    }
     render() {
       return (
         <div>

@@ -1,7 +1,7 @@
 // import React from 'react'
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Navbar, NavItem, NavDropdown, MenuItem, Nav, Form, FormControl, Button } from 'react-bootstrap';
+//import { Link } from 'react-router-dom';
+import { Nav, Navbar /*, NavItem, NavDropdown, MenuItem, Form, FormControl, Button */} from 'react-bootstrap';
 
 const NavBar = () => {
     return (
