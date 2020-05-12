@@ -12,20 +12,24 @@ services:
 
   backend:
     build: ./Server
+    depends_on: 
+      - rabbit
+      - postgres
+      - elasticsearch
     ports:
-      - 9080:80
+      - 127.0.0.1:9080:80
 
   frontend:
     build: ./Client
     ports:
-      - 8080:80
+      - 127.0.0.1:8080:80
 
   rabbit:
     image: rabbitmq:3.7.26-management-alpine
     hostname: app-rabbitmq
     ports:
-      - 5672:5672
-      - 15672:15672
+      - 127.0.0.1:5672:5672
+      - 127.0.0.1:15672:15672
     volumes:
       - rabbitdata:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
     environment:
@@ -44,8 +48,29 @@ services:
     environment:
       POSTGRES_PASSWORD: postgres
 
+  elasticsearch:
+    image: elasticsearch:7.6.2
+    ports:
+      - 127.0.0.1:9200:9200
+      - 127.0.0.1:9300:9300
+    volumes:
+      - elasticdata:/usr/share/elasticsearch/data
+    environment:
+      - node.name=es_dev
+      - cluster.name=cherry-peak-es
+      - cluster.initial_master_nodes=es_dev
+  
+  kibana:
+    image: kibana:7.6.2
+    depends_on:
+      - elasticsearch
+    ports:
+      - 127.0.0.1:5601:5601
+
 volumes:
   pgdata:
     driver: local
   rabbitdata:
+    driver: local
+  elasticdata:
     driver: local
