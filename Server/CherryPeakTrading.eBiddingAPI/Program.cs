@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +6,8 @@ using Serilog.Formatting.Elasticsearch;
 using Serilog.Formatting.Json;
 using Serilog.Sinks.Elasticsearch;
 using Serilog.Sinks.RollingFile;
+using System;
+using System.IO;
 
 namespace CherryPeakTrading.eBidding
 {
