@@ -1,0 +1,27 @@
+name: Front-end
+
+on:
+  push:
+    branches: [ master, develop ]
+  pull_request:
+    branches: [ master, develop ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        cd Client
+        yarn install
+    - name: Build
+      run: |
+        cd Client
+        yarn build
+    - name: Run tests
+      run: |
+        cd Client
+        yarn test
