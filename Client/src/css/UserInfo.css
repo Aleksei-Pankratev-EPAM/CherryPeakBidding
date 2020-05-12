@@ -1,0 +1,21 @@
+.user-info {
+    border-radius: 5px;
+    margin: 1.0em auto;
+    padding: 0.5em 0;
+    text-align: center;
+}
+
+.user-info div {
+    margin: 0.2em 0;
+}
+
+.user-name {
+    font-weight: bold;
+    font-size: 110%;
+    color: #88018a;
+ }
+
+ .user-balance {
+     font-weight: bold;
+     font-size: 105%;
+ }
