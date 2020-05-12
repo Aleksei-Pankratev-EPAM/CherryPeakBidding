@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "urlToImage": null,
+        "title": "lot1",
+        "description": "description1",
+        "createdAt": "April 28, 2020"
+    },
+    {
+        "id": "2",
+        "urlToImage": null,
+        "title": "lot2",
+        "description": "description2",
+        "createdAt": "May 3, 2020"
+    },
+    {
+        "id": "3",
+        "urlToImage": null,
+        "title": "lot3",
+        "description": "description3",
+        "createdAt": "May 5, 2020"
+    },
+    {
+        "id": "4",
+        "urlToImage": null,
+        "title": "lot4",
+        "description": "description4",
+        "createdAt": "May 8, 2020"
+    },
+    {
+        "id": "5",
+        "urlToImage": null,
+        "title": "lot5",
+        "description": "description5",
+        "createdAt": "May 10, 2020"
+    }
+]
