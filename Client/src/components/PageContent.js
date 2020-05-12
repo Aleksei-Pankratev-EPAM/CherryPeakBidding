@@ -14,7 +14,7 @@ import '../css/PageContent.css';
 
 function PageContent() {
     return (
-        <div className="page-content col-md-10">
+        <div className="page-content col-md">
             <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/lots" render={({ match: { url } }) => (

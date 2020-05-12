@@ -1,0 +1,7 @@
+@media screen and (max-width: 1280px) {
+    .logo img {
+      display: block;
+      margin: 0 auto;
+      content: url("/logo-small.png");
+    }
+}
