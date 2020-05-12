@@ -7,7 +7,7 @@ using Serilog;
 using Serilog.Formatting.Elasticsearch;
 using Serilog.Formatting.Json;
 using Serilog.Sinks.Elasticsearch;
-using Serilog.Sinks.File;
+using Serilog.Sinks.RollingFile;
 
 namespace CherryPeakTrading.eBidding
 {
@@ -65,7 +65,7 @@ namespace CherryPeakTrading.eBidding
                       EmitEventFailure = EmitEventFailureHandling.WriteToSelfLog |
                                        EmitEventFailureHandling.WriteToFailureSink |
                                        EmitEventFailureHandling.RaiseCallback,
-                      FailureSink = new FileSink("./failureSink.txt", new JsonFormatter(), null, null)
+                      FailureSink = new RollingFileSink("./failureSink.txt", new JsonFormatter(), null, null)
                   })
                   .CreateLogger();
         }
