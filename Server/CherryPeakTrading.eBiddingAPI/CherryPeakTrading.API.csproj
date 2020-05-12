@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Nullable>enable</Nullable>
+    <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>true</RunAnalyzersDuringLiveAnalysis>
   </PropertyGroup>
 
 
@@ -13,5 +15,10 @@
     <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="8.1.0" />
     <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CherryPeakTrading.DI\CherryPeakTrading.DI.csproj" />
+  </ItemGroup>
+
 
 </Project>

@@ -1,3 +1,4 @@
+using CherryPeakTrading.DI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,8 +10,6 @@ namespace CherryPeakTrading.eBidding
 {
     public class Startup
     {
-        private const string BiddingDBConnectionString = "BiddingDB";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,6 +20,7 @@ namespace CherryPeakTrading.eBidding
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            RegisterDependencies(services);
             services.AddControllers();
         }
 
@@ -44,6 +44,11 @@ namespace CherryPeakTrading.eBidding
             {
                 endpoints.MapControllers();
             });
+        }
+
+        protected void RegisterDependencies(IServiceCollection services)
+        {
+            services.ConfigureBidding(Configuration);
         }
     }
 }
