@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace CherryPeakTrading.BL.Entities
+﻿namespace CherryPeakTrading.BL.Entities
 {
-	public class LotPicture
-	{
-		public long Id { get; set; }
-	}
+    public class LotPicture
+    {
+        public long Id { get; set; }
+    }
 }
