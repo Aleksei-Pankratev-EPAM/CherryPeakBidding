@@ -2,6 +2,7 @@
     .logo img {
       display: block;
       margin: 0 auto;
-      content: url("/logo-small.png");
+      content: url("/logo.svg");
+      width: 200px;
     }
 }
