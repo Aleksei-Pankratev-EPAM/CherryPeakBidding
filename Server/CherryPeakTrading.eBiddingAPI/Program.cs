@@ -52,7 +52,6 @@ namespace CherryPeakTrading.eBidding
                   .Enrich.WithMachineName()
                   .Enrich.WithEnvironmentUserName()
                   .Enrich.FromLogContext()
-                  .WriteTo.Seq(Configuration.GetConnectionString("Seq"))
                   .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(Configuration.GetConnectionString("ElasticSearch")))
                   {
                       // Write a default template to Elasticsearch
