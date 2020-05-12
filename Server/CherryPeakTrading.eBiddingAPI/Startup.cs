@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace CherryPeakTrading.eBidding
 {
@@ -33,6 +34,8 @@ namespace CherryPeakTrading.eBidding
 			}
 
 			app.UseHttpsRedirection();
+
+			app.UseSerilogRequestLogging();
 
 			app.UseRouting();
 
