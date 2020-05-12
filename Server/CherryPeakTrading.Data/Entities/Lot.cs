@@ -7,11 +7,11 @@ namespace CherryPeakTrading.Data.Entities
 	{
 		public long Id { get; set; }
 
-		public string Title { get; set; }
+		public string Title { get; set; } = "";
 
-		public string Description { get; set; }
+        public string Description { get; set; } = "";
 
-		public LotPicture Picture { get; set; }
+		public LotPicture? Picture { get; set; }
 
 		public decimal MinPrice { get; set; }
 
@@ -29,7 +29,6 @@ namespace CherryPeakTrading.Data.Entities
 
 		public DateTime EndTime { get; set; }
 
-		public List<Bid> Bids { get; set; }
-
+		public List<Bid> Bids { get; set; } = new List<Bid>();
 	}
 }
