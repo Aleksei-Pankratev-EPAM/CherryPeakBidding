@@ -7,7 +7,7 @@ function Logo() {
     return (
         <div className="logo d-flex justify-content-center">
             <Link to="/">
-                <img className="text-center" alt="Cherry Peak Bidding" />
+                <img className="text-center" alt="Cherry Peak Bidding" src="/logo.svg" />
             </Link>
         </div>
     );
