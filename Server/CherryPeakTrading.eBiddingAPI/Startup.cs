@@ -1,4 +1,6 @@
 using CherryPeakTrading.DI;
+using CherryPeakTrading.Data.Contracts.Messaging;
+using CherryPeakTrading.DI.Messaging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +12,8 @@ namespace CherryPeakTrading.eBidding
 {
     public class Startup
     {
+        private const string MessagingSectionKey = "Messaging";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -22,6 +26,11 @@ namespace CherryPeakTrading.eBidding
         {
             RegisterDependencies(services);
             services.AddControllers();
+
+            var messagingConfiguration = Configuration.GetSection(MessagingSectionKey)?.Get<MessagingConfiguration>()
+                                         ?? new MessagingConfiguration();
+            services.AddMessaging(messagingConfiguration);
+            services.AddMessagePublishing();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
