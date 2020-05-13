@@ -6,21 +6,21 @@ namespace CherryPeakTrading.Data.EF.Entities
 {
     public class Lot
     {
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
-        public string Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
-        public List<Photo> Photos { get; set; }
+        public List<Photo> Photos { get; set; } = new List<Photo>();
 
         public decimal StartPrice { get; set; }
 
         public decimal PriceStep { get; set; }
 
-        public long CreatorID { get; set; }
+        public long CreatorId { get; set; }
 
-        [ForeignKey(nameof(CreatorID))]
+        [ForeignKey(nameof(CreatorId))]
         public User Creator { get; set; }
 
         public uint TimeToLive { get; set; }

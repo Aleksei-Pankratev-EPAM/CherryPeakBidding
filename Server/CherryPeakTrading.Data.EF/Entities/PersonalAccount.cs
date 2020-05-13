@@ -4,13 +4,13 @@ namespace CherryPeakTrading.Data.EF.Entities
 {
     public class PersonalAccount
     {
-        public long ID { get; set; }
+        public long Id { get; set; }
 
         public decimal Balance { get; set; }
 
-        public long OwnerID { get; set; }
+        public long OwnerId { get; set; }
 
-        [ForeignKey(nameof(OwnerID))]
+        [ForeignKey(nameof(OwnerId))]
         public User Owner { get; set; }
     }
 }

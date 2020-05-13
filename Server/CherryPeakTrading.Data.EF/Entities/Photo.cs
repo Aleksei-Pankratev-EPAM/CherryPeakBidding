@@ -5,13 +5,13 @@ namespace CherryPeakTrading.Data.EF.Entities
 {
     public class Photo
     {
-        public long ID { get; set; }
+        public long Id { get; set; }
 
         public string Url { get; set; }
 
-        public Guid LotID { get; set; }
+        public Guid LotId { get; set; }
 
-        [ForeignKey(nameof(LotID))]
+        [ForeignKey(nameof(LotId))]
         public Lot Lot { get; set; }
     }
 }
