@@ -7,9 +7,9 @@ namespace CherryPeakTrading.BL.Entities
     {
         public long Id { get; set; }
 
-        public string Title { get; set; } = "";
+        public string Title { get; set; } = string.Empty;
 
-        public string Description { get; set; } = "";
+        public string Description { get; set; } = string.Empty;
 
         public LotPicture? Picture { get; set; }
 
