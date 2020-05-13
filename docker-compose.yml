@@ -18,6 +18,8 @@ services:
       - elasticsearch
     ports:
       - 127.0.0.1:9080:80
+    environment:
+      - ConnectionStrings:Elasticsearch=http://elasticsearch:9200
 
   frontend:
     build: ./Client
@@ -65,7 +67,7 @@ services:
     depends_on:
       - elasticsearch
     ports:
-      - 127.0.0.1:5601:5601
+      - 5601:5601
 
 volumes:
   pgdata:
