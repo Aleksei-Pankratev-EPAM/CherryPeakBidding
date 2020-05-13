@@ -20,6 +20,8 @@ services:
       - 127.0.0.1:9080:80
     environment:
       - ConnectionStrings:Elasticsearch=http://elasticsearch:9200
+      - ConnectionStrings:BiddingDB=server=postgres;Port=5432;database=BiddingDB;User ID=postgres;password=postgres;
+      - Messaging:HostName=rabbit
 
   frontend:
     build: ./Client
