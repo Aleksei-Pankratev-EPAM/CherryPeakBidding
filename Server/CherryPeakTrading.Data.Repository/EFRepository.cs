@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CherryPeakTrading.Data.Repository
 {
-    public abstract class EFRepository<TEntity, TContext, TCriteria> : IRepository<TEntity, TCriteria>
+    public abstract class EFRepository<TEntity, TContext, TSpecification> : IRepository<TEntity, TSpecification>
         where TEntity : class
         where TContext : DbContext
-        where TCriteria : class
+        where TSpecification : ISpecification<TEntity>
     {
         private readonly TContext context;
 
-        public EFRepository(TContext context)
+        protected EFRepository(TContext context)
         {
             this.context = context;
         }
@@ -25,7 +25,7 @@ namespace CherryPeakTrading.Data.Repository
             return entity;
         }
 
-        public async Task<TEntity> Delete(int id)
+        public async Task<TEntity?> Delete(int id)
         {
             var entity = await context.Set<TEntity>().FindAsync(id);
             if (entity == null)
@@ -44,7 +44,7 @@ namespace CherryPeakTrading.Data.Repository
             return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public Task<IList<TEntity>> Get(TCriteria criteria)
+        public Task<IList<TEntity>> Get(TSpecification criteria)
         {
             throw new NotImplementedException();
         }

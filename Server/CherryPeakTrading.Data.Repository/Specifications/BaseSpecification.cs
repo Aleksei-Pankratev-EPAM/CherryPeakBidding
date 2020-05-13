@@ -7,7 +7,7 @@ namespace CherryPeakTrading.Data.Repository.Specifications
 {
     public class BaseSpecification<T> : ISpecification<T>
     {
-        public Expression<Func<T, bool>> Criteria { get; set; }
+        public Expression<Predicate<T>> Criteria { get; set; } = _ => false;
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
         public List<string> IncludeStrings { get; } = new List<string>();
 

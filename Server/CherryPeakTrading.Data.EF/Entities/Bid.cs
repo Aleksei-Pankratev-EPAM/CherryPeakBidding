@@ -5,19 +5,20 @@ namespace CherryPeakTrading.Data.EF.Entities
 {
     public class Bid
     {
-        public long ID { get; set; }
+        public long Id { get; set; }
 
-        public long BidderID { get; set; }
+        public long BidderId { get; set; }
 
+        [ForeignKey(nameof(BidderId))]
         public User Bidder { get; set; }
 
         public DateTime CreatedAt { get; set; }
 
         public decimal Offer { get; set; }
 
-        public Guid LotID { get; set; }
+        public Guid LotId { get; set; }
 
-        [ForeignKey(nameof(LotID))]
+        [ForeignKey(nameof(LotId))]
         public Lot Lot { get; set; }
     }
 }

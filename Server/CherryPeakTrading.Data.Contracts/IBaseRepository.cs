@@ -8,6 +8,6 @@ namespace CherryPeakTrading.Data.Contracts
 
         Task<T> Update(T entity);
 
-        Task<T> Delete(int id);
+        Task<T?> Delete(int id);
     }
 }

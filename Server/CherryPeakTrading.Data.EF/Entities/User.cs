@@ -4,15 +4,15 @@ namespace CherryPeakTrading.Data.EF.Entities
 {
     public class User
     {
-        public long ID { get; set; }
+        public long Id { get; set; }
 
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
-        public int RegionID { get; set; }
+        public int RegionId { get; set; }
 
-        [ForeignKey(nameof(RegionID))]
+        [ForeignKey(nameof(RegionId))]
         public Region Region { get; set; }
 
         public PersonalAccount PersonalAccount { get; set; }

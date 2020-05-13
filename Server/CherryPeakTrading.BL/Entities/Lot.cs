@@ -17,7 +17,7 @@ namespace CherryPeakTrading.BL.Entities
 
         public int CreatorId { get; set; }
 
-        public int RegionID { get; set; }
+        public int RegionId { get; set; }
 
         public int TimeToLeave { get; set; }
 

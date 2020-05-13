@@ -6,7 +6,7 @@ namespace CherryPeakTrading.Data.Contracts
 {
     public interface ISpecification<T>
     {
-        Expression<Func<T, bool>> Criteria { get; }
+        Expression<Predicate<T>> Criteria { get; }
         List<Expression<Func<T, object>>> Includes { get; }
         List<string> IncludeStrings { get; }
     }
