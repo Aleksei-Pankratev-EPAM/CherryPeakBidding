@@ -1,6 +1,7 @@
 using CherryPeakTrading.Data.Contracts.Messaging;
 using CherryPeakTrading.DI.Logging;
 using CherryPeakTrading.DI.Messaging;
+using CherryPeakTrading.WorkerService.Consumers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +28,8 @@ namespace CherryPeakTrading.WorkerService
 
                     services.AddMessaging(messagingConfiguration);
                     services.AddMessagePublishing();
+                    services.AddMessageConsumer<LotCreatedConsumer>();
+                    services.AddMessageConsumer<BidCreatedConsumer>();
 
                     services.AddHostedService<Worker>();
                 });
