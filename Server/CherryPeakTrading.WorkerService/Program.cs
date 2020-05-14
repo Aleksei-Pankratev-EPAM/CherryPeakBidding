@@ -26,6 +26,7 @@ namespace CherryPeakTrading.WorkerService
                                                  ?? new MessagingConfiguration();
 
                     services.AddMessaging(messagingConfiguration);
+                    services.AddMessagePublishing();
 
                     services.AddHostedService<Worker>();
                 });

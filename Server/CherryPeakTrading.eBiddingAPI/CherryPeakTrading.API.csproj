@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CherryPeakTrading.BusinessLogic.Entities\CherryPeakTrading.BL.Contracts.csproj" />
     <ProjectReference Include="..\CherryPeakTrading.DI\CherryPeakTrading.DI.csproj" />
   </ItemGroup>
 
