@@ -1,5 +1,6 @@
 using CherryPeakTrading.DI;
 using CherryPeakTrading.Data.Contracts.Messaging;
+using CherryPeakTrading.DI.Logging;
 using CherryPeakTrading.DI.Messaging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +27,9 @@ namespace CherryPeakTrading.eBidding
         {
             RegisterDependencies(services);
             services.AddControllers();
+
+            var esConnectionString = Configuration.GetConnectionString("ElasticSearch");
+            services.AddStructuredLogging(esConnectionString);
 
             var messagingConfiguration = Configuration.GetSection(MessagingSectionKey)?.Get<MessagingConfiguration>()
                                          ?? new MessagingConfiguration();
