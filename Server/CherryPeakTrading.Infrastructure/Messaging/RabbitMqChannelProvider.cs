@@ -7,7 +7,7 @@ namespace CherryPeakTrading.Infrastructure.Messaging
     /// Since the same channel should not be used concurrently (see https://www.rabbitmq.com/dotnet-api-guide.html#connection-and-channel-lifspan)
     /// this provider's scope must be either `Thread` (not supported by MS DI), or `Scoped`.
     /// </summary>
-    internal class RabbitMqChannelProvider
+    internal class RabbitMqChannelProvider : IRabbitMqChannelProvider
     {
         private readonly IConnection _connection;
         private IModel? _channel;
