@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using System;
 
 namespace CherryPeakTrading.Data.EF.Migrations
 {
@@ -12,33 +12,33 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 name: "Regions",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Regions", x => x.ID);
+                    table.PrimaryKey("PK_Regions", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
-                    ID = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(nullable: true),
                     Email = table.Column<string>(nullable: true),
-                    RegionID = table.Column<int>(nullable: false)
+                    RegionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Users", x => x.ID);
+                    table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Regions_RegionID",
-                        column: x => x.RegionID,
+                        name: "FK_Users_Regions_RegionId",
+                        column: x => x.RegionId,
                         principalTable: "Regions",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -46,12 +46,12 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 name: "Lots",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(nullable: false),
+                    Id = table.Column<Guid>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
                     StartPrice = table.Column<decimal>(nullable: false),
                     PriceStep = table.Column<decimal>(nullable: false),
-                    CreatorID = table.Column<long>(nullable: false),
+                    CreatorId = table.Column<long>(nullable: false),
                     TimeToLive = table.Column<long>(nullable: false),
                     BiddingTime = table.Column<long>(nullable: false),
                     Status = table.Column<int>(nullable: false),
@@ -59,12 +59,12 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Lots", x => x.ID);
+                    table.PrimaryKey("PK_Lots", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Lots_Users_CreatorID",
-                        column: x => x.CreatorID,
+                        name: "FK_Lots_Users_CreatorId",
+                        column: x => x.CreatorId,
                         principalTable: "Users",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -72,19 +72,19 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 name: "PersonalAccounts",
                 columns: table => new
                 {
-                    ID = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Balance = table.Column<decimal>(nullable: false),
-                    OwnerID = table.Column<long>(nullable: false)
+                    OwnerId = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PersonalAccounts", x => x.ID);
+                    table.PrimaryKey("PK_PersonalAccounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_PersonalAccounts_Users_OwnerID",
-                        column: x => x.OwnerID,
+                        name: "FK_PersonalAccounts_Users_OwnerId",
+                        column: x => x.OwnerId,
                         principalTable: "Users",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -92,27 +92,27 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 name: "Bids",
                 columns: table => new
                 {
-                    ID = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    BidderID = table.Column<long>(nullable: false),
+                    BidderId = table.Column<long>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     Offer = table.Column<decimal>(nullable: false),
-                    LotID = table.Column<Guid>(nullable: false)
+                    LotId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bids", x => x.ID);
+                    table.PrimaryKey("PK_Bids", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Bids_Users_BidderID",
-                        column: x => x.BidderID,
+                        name: "FK_Bids_Users_BidderId",
+                        column: x => x.BidderId,
                         principalTable: "Users",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Bids_Lots_LotID",
-                        column: x => x.LotID,
+                        name: "FK_Bids_Lots_LotId",
+                        column: x => x.LotId,
                         principalTable: "Lots",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -120,52 +120,52 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 name: "Photos",
                 columns: table => new
                 {
-                    ID = table.Column<long>(nullable: false)
+                    Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Url = table.Column<string>(nullable: true),
-                    LotID = table.Column<Guid>(nullable: false)
+                    LotId = table.Column<Guid>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Photos", x => x.ID);
+                    table.PrimaryKey("PK_Photos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Photos_Lots_LotID",
-                        column: x => x.LotID,
+                        name: "FK_Photos_Lots_LotId",
+                        column: x => x.LotId,
                         principalTable: "Lots",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bids_BidderID",
+                name: "IX_Bids_BidderId",
                 table: "Bids",
-                column: "BidderID");
+                column: "BidderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bids_LotID",
+                name: "IX_Bids_LotId",
                 table: "Bids",
-                column: "LotID");
+                column: "LotId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Lots_CreatorID",
+                name: "IX_Lots_CreatorId",
                 table: "Lots",
-                column: "CreatorID");
+                column: "CreatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PersonalAccounts_OwnerID",
+                name: "IX_PersonalAccounts_OwnerId",
                 table: "PersonalAccounts",
-                column: "OwnerID",
+                column: "OwnerId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Photos_LotID",
+                name: "IX_Photos_LotId",
                 table: "Photos",
-                column: "LotID");
+                column: "LotId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_RegionID",
+                name: "IX_Users_RegionId",
                 table: "Users",
-                column: "RegionID");
+                column: "RegionId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

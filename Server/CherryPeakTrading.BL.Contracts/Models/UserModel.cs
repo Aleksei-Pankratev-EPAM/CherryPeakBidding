@@ -1,6 +1,6 @@
-﻿namespace CherryPeakTrading.BL.Entities
+﻿namespace CherryPeakTrading.BL.Contracts.Models
 {
-    public class User
+    public class UserModel
     {
         public long Id { get; set; }
 

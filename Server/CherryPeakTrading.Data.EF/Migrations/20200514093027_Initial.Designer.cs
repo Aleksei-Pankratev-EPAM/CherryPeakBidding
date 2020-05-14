@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CherryPeakTrading.Data.EF.Migrations
 {
     [DbContext(typeof(BiddingDbContext))]
-    [Migration("20200512205032_Initial")]
+    [Migration("20200514093027_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,40 +18,40 @@ namespace CherryPeakTrading.Data.EF.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.3")
+                .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             modelBuilder.Entity("CherryPeakTrading.Data.EF.Entities.Bid", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<long>("BidderID")
+                    b.Property<long>("BidderId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<Guid>("LotID")
+                    b.Property<Guid>("LotId")
                         .HasColumnType("uuid");
 
                     b.Property<decimal>("Offer")
                         .HasColumnType("numeric");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("BidderID");
+                    b.HasIndex("BidderId");
 
-                    b.HasIndex("LotID");
+                    b.HasIndex("LotId");
 
                     b.ToTable("Bids");
                 });
 
             modelBuilder.Entity("CherryPeakTrading.Data.EF.Entities.Lot", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
@@ -61,7 +61,7 @@ namespace CherryPeakTrading.Data.EF.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<long>("CreatorID")
+                    b.Property<long>("CreatorId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Description")
@@ -82,16 +82,16 @@ namespace CherryPeakTrading.Data.EF.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CreatorID");
+                    b.HasIndex("CreatorId");
 
                     b.ToTable("Lots");
                 });
 
             modelBuilder.Entity("CherryPeakTrading.Data.EF.Entities.PersonalAccount", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -99,12 +99,12 @@ namespace CherryPeakTrading.Data.EF.Migrations
                     b.Property<decimal>("Balance")
                         .HasColumnType("numeric");
 
-                    b.Property<long>("OwnerID")
+                    b.Property<long>("OwnerId")
                         .HasColumnType("bigint");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("OwnerID")
+                    b.HasIndex("OwnerId")
                         .IsUnique();
 
                     b.ToTable("PersonalAccounts");
@@ -112,27 +112,27 @@ namespace CherryPeakTrading.Data.EF.Migrations
 
             modelBuilder.Entity("CherryPeakTrading.Data.EF.Entities.Photo", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<Guid>("LotID")
+                    b.Property<Guid>("LotId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Url")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("LotID");
+                    b.HasIndex("LotId");
 
                     b.ToTable("Photos");
                 });
 
             modelBuilder.Entity("CherryPeakTrading.Data.EF.Entities.Region", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -140,14 +140,14 @@ namespace CherryPeakTrading.Data.EF.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Regions");
                 });
 
             modelBuilder.Entity("CherryPeakTrading.Data.EF.Entities.User", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
@@ -158,12 +158,12 @@ namespace CherryPeakTrading.Data.EF.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("text");
 
-                    b.Property<int>("RegionID")
+                    b.Property<int>("RegionId")
                         .HasColumnType("integer");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("RegionID");
+                    b.HasIndex("RegionId");
 
                     b.ToTable("Users");
                 });
@@ -172,13 +172,13 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 {
                     b.HasOne("CherryPeakTrading.Data.EF.Entities.User", "Bidder")
                         .WithMany()
-                        .HasForeignKey("BidderID")
+                        .HasForeignKey("BidderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CherryPeakTrading.Data.EF.Entities.Lot", "Lot")
                         .WithMany("Bids")
-                        .HasForeignKey("LotID")
+                        .HasForeignKey("LotId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -187,7 +187,7 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 {
                     b.HasOne("CherryPeakTrading.Data.EF.Entities.User", "Creator")
                         .WithMany()
-                        .HasForeignKey("CreatorID")
+                        .HasForeignKey("CreatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -196,7 +196,7 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 {
                     b.HasOne("CherryPeakTrading.Data.EF.Entities.User", "Owner")
                         .WithOne("PersonalAccount")
-                        .HasForeignKey("CherryPeakTrading.Data.EF.Entities.PersonalAccount", "OwnerID")
+                        .HasForeignKey("CherryPeakTrading.Data.EF.Entities.PersonalAccount", "OwnerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -205,7 +205,7 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 {
                     b.HasOne("CherryPeakTrading.Data.EF.Entities.Lot", "Lot")
                         .WithMany("Photos")
-                        .HasForeignKey("LotID")
+                        .HasForeignKey("LotId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -214,7 +214,7 @@ namespace CherryPeakTrading.Data.EF.Migrations
                 {
                     b.HasOne("CherryPeakTrading.Data.EF.Entities.Region", "Region")
                         .WithMany()
-                        .HasForeignKey("RegionID")
+                        .HasForeignKey("RegionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

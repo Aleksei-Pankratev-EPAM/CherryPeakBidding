@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CherryPeakTrading.BL.Contracts", "Server\CherryPeakTrading.BusinessLogic.Entities\CherryPeakTrading.BL.Contracts.csproj", "{2B39BA4C-28F5-4D17-B128-57BC8020D06E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CherryPeakTrading.Data.Contracts", "Server\CherryPeakTrading.Data.Contracts\CherryPeakTrading.Data.Contracts.csproj", "{3E06EE66-9990-4780-A0F1-7C1AE39665EF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CherryPeakTrading.API", "Server\CherryPeakTrading.eBiddingAPI\CherryPeakTrading.API.csproj", "{228A71D3-3062-4133-9105-1857AC4D523D}"
@@ -30,6 +28,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution Items", ".Solutio
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CherryPeakTrading.BL.Contracts", "Server\CherryPeakTrading.BL.Contracts\CherryPeakTrading.BL.Contracts.csproj", "{771AABB2-3A60-4185-9432-F158B3D157F5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CherryPeakTrading.Infrastructure.Contracts", "Server\CherryPeakTrading.Infrastructure.Contracts\CherryPeakTrading.Infrastructure.Contracts.csproj", "{7FE20D60-6D63-402C-9D0E-06000936E8F6}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CherryPeakTrading.WorkerService", "Server\CherryPeakTrading.WorkerService\CherryPeakTrading.WorkerService.csproj", "{931C82BC-7252-46CA-9A4A-550D00435E63}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CherryPeakTrading.Infrastructure.Tests", "Server\CherryPeakTrading.Infrastructure.Tests\CherryPeakTrading.Infrastructure.Tests.csproj", "{62B4F25A-454D-4EBC-987D-3BC1EC28020D}"
@@ -40,10 +42,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2B39BA4C-28F5-4D17-B128-57BC8020D06E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B39BA4C-28F5-4D17-B128-57BC8020D06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B39BA4C-28F5-4D17-B128-57BC8020D06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B39BA4C-28F5-4D17-B128-57BC8020D06E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3E06EE66-9990-4780-A0F1-7C1AE39665EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3E06EE66-9990-4780-A0F1-7C1AE39665EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E06EE66-9990-4780-A0F1-7C1AE39665EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,6 +70,14 @@ Global
 		{DEDC6C06-0A7F-4E50-B622-7F0CCE46E36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEDC6C06-0A7F-4E50-B622-7F0CCE46E36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEDC6C06-0A7F-4E50-B622-7F0CCE46E36A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{771AABB2-3A60-4185-9432-F158B3D157F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771AABB2-3A60-4185-9432-F158B3D157F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771AABB2-3A60-4185-9432-F158B3D157F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771AABB2-3A60-4185-9432-F158B3D157F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FE20D60-6D63-402C-9D0E-06000936E8F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FE20D60-6D63-402C-9D0E-06000936E8F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FE20D60-6D63-402C-9D0E-06000936E8F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FE20D60-6D63-402C-9D0E-06000936E8F6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{931C82BC-7252-46CA-9A4A-550D00435E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{931C82BC-7252-46CA-9A4A-550D00435E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{931C82BC-7252-46CA-9A4A-550D00435E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -85,7 +91,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{2B39BA4C-28F5-4D17-B128-57BC8020D06E} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{3E06EE66-9990-4780-A0F1-7C1AE39665EF} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{228A71D3-3062-4133-9105-1857AC4D523D} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{146CE141-207B-4EC4-BF39-01883D1BDCD0} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
@@ -93,6 +98,8 @@ Global
 		{20F56DC0-47B0-40CE-92E2-EBA3A422C571} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{935F74C0-E398-4084-B427-454DA90FFF38} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{DEDC6C06-0A7F-4E50-B622-7F0CCE46E36A} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
+		{771AABB2-3A60-4185-9432-F158B3D157F5} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
+		{7FE20D60-6D63-402C-9D0E-06000936E8F6} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{931C82BC-7252-46CA-9A4A-550D00435E63} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{62B4F25A-454D-4EBC-987D-3BC1EC28020D} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 	EndGlobalSection
