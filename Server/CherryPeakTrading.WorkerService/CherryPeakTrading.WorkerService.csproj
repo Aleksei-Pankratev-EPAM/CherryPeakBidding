@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Worker">
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CherryPeakTrading.BusinessLogic.Entities\CherryPeakTrading.BL.Contracts.csproj" />
     <ProjectReference Include="..\CherryPeakTrading.DI\CherryPeakTrading.DI.csproj" />
   </ItemGroup>
 </Project>
