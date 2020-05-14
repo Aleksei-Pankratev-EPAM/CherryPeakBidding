@@ -5,6 +5,12 @@ using CherryPeakTrading.Data.EF;
 using CherryPeakTrading.Data.Repository;
 using CherryPeakTrading.Infrastructure.Contracts;
 using CherryPeakTrading.Infrastructure.Mapping;
+using CherryPeakTrading.Data.EF.Entities;
+using CherryPeakTrading.Data.Repository;
+using CherryPeakTrading.Data.Specifications;
+using CherryPeakTrading.Infrastructure.Contracts;
+using CherryPeakTrading.Infrastructure.FileStorage;
+using CherryPeakTrading.Infrastructure.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +28,11 @@ namespace CherryPeakTrading.DI
             services.AddSingleton<IMapperAdapter, BiddingMapperAdapter>();
             services.AddScoped<ILotRepository, LotsRepository>();
             services.AddScoped<ILotsLogic, LotsLogic>();
+            services.AddTransient<IFileStorage, BlobStorage>();
+            services.AddTransient<IPhotosLogic, PhotosLogic>();
+            services.AddTransient<ILotsLogic, LotsLogic>();
+            services.AddTransient<IRepository<Photo, PhotosSpecification>, PhotosRepository>();
+            services.AddTransient<IMapperAdapter, BiddingMapper>();
         }
     }
 }

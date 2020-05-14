@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace CherryPeakTrading.API.Models.Responses
+namespace CherryPeakTrading.API.Models.ViewModels
 {
-    public class Lot
+    public class LotsFilterViewModel
     {
-        public Guid Id { get; set; }
+        public Guid Guid { get; set; }
 
         public string Title { get; set; } = string.Empty;
 
@@ -16,10 +14,6 @@ namespace CherryPeakTrading.API.Models.Responses
 
         public decimal PriceStep { get; set; }
 
-        public uint TimeToLive { get; set; }
-
         public uint BiddingTime { get; set; }
-
-        public DateTime CreatedAt { get; set; }
     }
 }

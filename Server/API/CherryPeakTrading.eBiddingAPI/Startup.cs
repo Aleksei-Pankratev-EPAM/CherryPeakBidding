@@ -4,6 +4,8 @@ using CherryPeakTrading.DI.Messaging;
 using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Azure.Storage;
+using Microsoft.Azure.Storage.Blob;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -31,6 +33,7 @@ namespace CherryPeakTrading.eBidding
         {
             RegisterDependencies(services);
             services.AddControllers();
+            services.AddSingleton(sp => { return CloudStorageAccount.Parse(Configuration.GetConnectionString("BlobAccessKey")).CreateCloudBlobClient(); });
 
             var esConnectionString = Configuration.GetConnectionString("ElasticSearch");
             services.AddStructuredLogging(esConnectionString);
