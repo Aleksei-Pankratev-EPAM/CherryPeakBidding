@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "CherryPeakTrading.WorkerService": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "environmentVariables": {
+        "ConnectionStrings:Elasticsearch": "http://elasticsearch:9200",
+        "Messaging:HostName": "rabbit"
+      }
+    }
+  }
+}

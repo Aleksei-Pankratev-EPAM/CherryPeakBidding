@@ -30,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Solution Items", ".Solutio
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CherryPeakTrading.WorkerService", "Server\CherryPeakTrading.WorkerService\CherryPeakTrading.WorkerService.csproj", "{931C82BC-7252-46CA-9A4A-550D00435E63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{DEDC6C06-0A7F-4E50-B622-7F0CCE46E36A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEDC6C06-0A7F-4E50-B622-7F0CCE46E36A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEDC6C06-0A7F-4E50-B622-7F0CCE46E36A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{931C82BC-7252-46CA-9A4A-550D00435E63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931C82BC-7252-46CA-9A4A-550D00435E63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931C82BC-7252-46CA-9A4A-550D00435E63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931C82BC-7252-46CA-9A4A-550D00435E63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -81,6 +87,7 @@ Global
 		{20F56DC0-47B0-40CE-92E2-EBA3A422C571} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{935F74C0-E398-4084-B427-454DA90FFF38} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 		{DEDC6C06-0A7F-4E50-B622-7F0CCE46E36A} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
+		{931C82BC-7252-46CA-9A4A-550D00435E63} = {8663B0BF-3BC1-4D7D-AB48-C81C9F9A40B5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA632E38-AD91-47B2-BA43-2D5396FA39BC}
