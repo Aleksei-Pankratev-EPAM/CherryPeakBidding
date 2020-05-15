@@ -28,7 +28,7 @@ class AddLot extends Component {
     this.state = {
       lot: {
         id: uuid(),
-        title: '',
+        title: 'Name',
         description: '',
         startPrice: START_PRICE_DEFAULT,
         priceStep: PRICE_STEP_DEFAULT,
@@ -44,30 +44,25 @@ class AddLot extends Component {
         biddingTime: []
       },
     }
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.isFormValid = this.isFormValid.bind(this);
-    this.validateForm = this.validateForm.bind(this);
   }
 
   componentDidMount() {
     this.validateForm();
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     createLot(this.state.lot,
       (result) => {
-        alert('Лот успешно создан');
+        alert('Lot successfully created');
         this.props.history.push(`/lots/details/${this.state.lot.id}`);
       },
       (error) => {
-        alert('При создании лота произошла ошибка: ' + error);
+        alert('Error during lot creation: ' + error);
       });
     event.preventDefault();
   }
 
-  handleChange(event) {
+  handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     const updatedLot = this.state.lot;
@@ -78,7 +73,7 @@ class AddLot extends Component {
     );
   }
 
-  validateField(fieldName, value) {
+  validateField = (fieldName, value) => {
     let fieldValidationErrors = this.state.formErrors;
     let errors = [];
 
@@ -105,13 +100,13 @@ class AddLot extends Component {
     }, this.updateFormValidationState);
   }
 
-  validateForm() {
+  validateForm = () => {
     for (const fieldName in this.state.lot) {
       this.validateField(fieldName, this.state.lot[fieldName]);
     }
   }
 
-  isFormValid() {
+  isFormValid = () => {
     for (const key in this.state.formErrors) {
       if (this.state.formErrors[key]?.length > 0) {
         return false;
@@ -120,7 +115,7 @@ class AddLot extends Component {
     return true;
   }
 
-  updateFormValidationState() {
+  updateFormValidationState = () => {
     this.setState({ formValid: this.isFormValid() });
   }
 
@@ -128,7 +123,7 @@ class AddLot extends Component {
     return !errors || errors.length === 0;
   }
 
-  renderFieldRow(fieldName, title, type, details, placeholder, required, addon) {
+  renderFieldRow = (fieldName, title, type, details, placeholder, required, addon) => {
     const validationErrors = this.state.formErrors[fieldName];
 
     return (
@@ -153,9 +148,9 @@ class AddLot extends Component {
         <h1>Новый лот</h1>
 
         <form onSubmit={this.handleSubmit}>
-          {this.renderFieldRow('title', 'Наименование лота', 'text', 'Например, «Стул обеденный»', null, true, null)}
+          {this.renderFieldRow('title', 'Lot name', 'text', 'E.x «chair»', null, true, null)}
 
-          <FieldRowContainer title='Описание' name='description'>
+          <FieldRowContainer title='Description' name='description'>
             <textarea name='description' className={`form-control ${this.isFieldValid(this.state.formErrors['description']) ? 'is-valid' : 'is-invalid'}`} rows="3"
               value={this.state.lot.description} onChange={this.handleChange} />
             <div className="invalid-tooltip">
@@ -163,15 +158,15 @@ class AddLot extends Component {
             </div>
           </FieldRowContainer>
 
-          {this.renderFieldRow('startPrice', 'Начальная цена', 'number', null, START_PRICE_DEFAULT, true, 'cc')}
+          {this.renderFieldRow('startPrice', 'StartPrice', 'number', null, START_PRICE_DEFAULT, true, 'cc')}
 
-          {this.renderFieldRow('priceStep', 'Минимальный шаг', 'number', 'Минимальный шаг приращения цены', PRICE_STEP_DEFAULT, true, 'cc')}
+          {this.renderFieldRow('priceStep', 'Min spice step', 'number', null, PRICE_STEP_DEFAULT, true, 'cc')}
 
-          {this.renderFieldRow('biddingTime', 'Время одного раунда', 'number', null, BIDDING_TIME_DEFAULT, true, 'мин.')}
+          {this.renderFieldRow('biddingTime', 'One round time', 'number', null, BIDDING_TIME_DEFAULT, true, 'min.')}
 
           <div className="form-group row">
             <div className="col-sm-10">
-              <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Создать</button>
+              <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Create</button>
             </div>
           </div>
         </form>

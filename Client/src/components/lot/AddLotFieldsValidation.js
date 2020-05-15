@@ -87,17 +87,17 @@ getBiddingTimeValidationErrors.propTypes = {
 }
 
 function NotEmpty() {
-    return 'Поле должно быть заполнено.';
+    return 'The field cannot be empty.';
 }
 
 function TooLong(maxLength) {
-    return `Поле должно быть не длиннее ${maxLength}.`;
+    return `The field length cannot be greater than ${maxLength}.`;
 }
 
 function LessThan(value) {
-    return `Значение должно быть больше, чем ${value}.`;
+    return `The field value cannot be less than ${value}.`;
 }
 
 function GreaterThan( value) {
-    return `Значение должно быть меньше, чем ${value}.`;
+    return `The field value cannot be greater than ${value}.`;
 }
