@@ -13,7 +13,7 @@ services:
   backend:
     build:
       context: ./Server
-      dockerfile: CherryPeakTrading.eBiddingAPI/Dockerfile
+      dockerfile: API/CherryPeakTrading.eBiddingAPI/Dockerfile
     depends_on: 
       - rabbit
       - postgres
