@@ -1,4 +1,4 @@
-using CherryPeakTrading.Data.Contracts.Messaging;
+using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using CherryPeakTrading.DI.Logging;
 using CherryPeakTrading.DI.Messaging;
 using CherryPeakTrading.WorkerService.Consumers;

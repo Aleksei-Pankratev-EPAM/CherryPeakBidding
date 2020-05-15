@@ -1,4 +1,4 @@
-﻿namespace CherryPeakTrading.Infrastructure.Messaging
+﻿namespace CherryPeakTrading.Infrastructure.Contracts.Messaging
 {
     /// <summary>
     /// A container class for messages failed to be consumed.

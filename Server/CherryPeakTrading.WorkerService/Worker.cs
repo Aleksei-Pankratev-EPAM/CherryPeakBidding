@@ -1,4 +1,4 @@
-using CherryPeakTrading.Data.Contracts.Messaging;
+using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using RabbitMQ.Client;

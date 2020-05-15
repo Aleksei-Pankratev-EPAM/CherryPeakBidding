@@ -1,4 +1,4 @@
-﻿namespace CherryPeakTrading.Data.Contracts.Messaging
+﻿namespace CherryPeakTrading.Infrastructure.Contracts.Messaging
 {
     /// <summary>
     /// A generic interface for publishing messages to a message queue.

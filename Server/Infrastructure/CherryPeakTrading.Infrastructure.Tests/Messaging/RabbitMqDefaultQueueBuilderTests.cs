@@ -1,4 +1,5 @@
 ﻿using CherryPeakTrading.Infrastructure.Messaging;
+using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using NUnit.Framework;
 
 namespace CherryPeakTrading.Infrastructure.Tests.Messaging

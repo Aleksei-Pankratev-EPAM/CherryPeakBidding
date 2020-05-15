@@ -1,4 +1,5 @@
-﻿using RabbitMQ.Client;
+﻿using CherryPeakTrading.Infrastructure.Contracts.Messaging;
+using RabbitMQ.Client;
 using System;
 using System.Linq;
 

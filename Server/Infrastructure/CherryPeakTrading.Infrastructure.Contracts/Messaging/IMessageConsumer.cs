@@ -1,4 +1,4 @@
-﻿namespace CherryPeakTrading.Data.Contracts.Messaging
+﻿namespace CherryPeakTrading.Infrastructure.Contracts.Messaging
 {
     public interface IMessageConsumer
     {

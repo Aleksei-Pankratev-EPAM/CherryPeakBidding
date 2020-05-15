@@ -1,5 +1,5 @@
 ﻿using CherryPeakTrading.BL.Contracts.Messages;
-using CherryPeakTrading.Data.Contracts.Messaging;
+using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using CherryPeakTrading.Infrastructure.Messaging;
 using Serilog;
 

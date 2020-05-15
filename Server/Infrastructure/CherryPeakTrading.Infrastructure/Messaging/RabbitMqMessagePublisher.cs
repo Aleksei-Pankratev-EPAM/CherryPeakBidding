@@ -1,4 +1,4 @@
-﻿using CherryPeakTrading.Data.Contracts.Messaging;
+﻿using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using Serilog;
