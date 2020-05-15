@@ -1,6 +1,6 @@
 
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const backendUrl = process.env.REACT_APP_SERVER_URL || 'http://localhost:9080';
+const backendUrl = process.env.REACT_APP_SERVER_URL;
 
 module.exports = function (app) {
 
