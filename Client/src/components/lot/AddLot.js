@@ -145,7 +145,7 @@ class AddLot extends Component {
   render() {
     return (
       <div>
-        <h1>Новый лот</h1>
+        <h1>New lot</h1>
 
         <form onSubmit={this.handleSubmit}>
           {this.renderFieldRow('title', 'Lot name', 'text', 'E.x «chair»', null, true, null)}
