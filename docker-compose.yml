@@ -11,7 +11,9 @@ services:
       - 80:80
 
   backend:
-    build: ./Server
+    build:
+      context: ./Server
+      dockerfile: CherryPeakTrading.eBiddingAPI/Dockerfile
     depends_on: 
       - rabbit
       - postgres
@@ -21,6 +23,17 @@ services:
     environment:
       - ConnectionStrings:Elasticsearch=http://elasticsearch:9200
       - ConnectionStrings:BiddingDB=server=postgres;Port=5432;database=BiddingDB;User ID=postgres;password=postgres;
+      - Messaging:HostName=rabbit
+
+  worker:
+    build:
+      context: ./Server
+      dockerfile: CherryPeakTrading.WorkerService/Dockerfile
+    depends_on: 
+      - rabbit
+      - elasticsearch
+    environment:
+      - ConnectionStrings:Elasticsearch=http://elasticsearch:9200
       - Messaging:HostName=rabbit
 
   frontend:

@@ -25,7 +25,7 @@ namespace CherryPeakTrading.DI.Messaging
                 AutomaticRecoveryEnabled = true
             };
 
-            services.AddSingleton(options => connectionFactory.CreateConnection());
+            services.AddSingleton<IConnectionFactory>(connectionFactory);
             services.AddScoped<IRabbitMqChannelProvider, RabbitMqChannelProvider>();
             services.AddSingleton(typeof(IRabbitMqQueueBuilder<>), typeof(RabbitMqDefaultQueueBuilder<>));
             return services;
