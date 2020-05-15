@@ -5,6 +5,7 @@
     <UserSecretsId>dotnet-CherryPeakTrading.WorkerService-632B6AB4-D3F5-4D39-9B95-F04647E8AF35</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..</DockerfileContext>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>

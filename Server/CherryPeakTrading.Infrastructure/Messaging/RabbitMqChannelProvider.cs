@@ -9,19 +9,22 @@ namespace CherryPeakTrading.Infrastructure.Messaging
     /// </summary>
     internal class RabbitMqChannelProvider : IRabbitMqChannelProvider
     {
-        private readonly IConnection _connection;
+        private readonly IConnectionFactory _connectionFactory;
+        private IConnection? _connection;
         private IModel? _channel;
 
-        public RabbitMqChannelProvider(IConnection connection)
+        public RabbitMqChannelProvider(IConnectionFactory connectionFactory)
         {
-            _connection = connection;
+            _connectionFactory = connectionFactory;
         }
 
         /// <summary>
-        /// Open a new channel or return the previously open one if it still alive.
+        /// Open a new channel or return the previously open one if it is still alive.
         /// </summary>
         public IModel OpenChannel()
         {
+            _connection ??= _connectionFactory.CreateConnection();
+
             if (_channel != null && _channel.IsClosed)
             {
                 _channel.Dispose();
