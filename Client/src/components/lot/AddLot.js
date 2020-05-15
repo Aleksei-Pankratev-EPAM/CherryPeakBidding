@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import uuid from 'react-uuid';
-import Redirect from 'react-dom';
 
 import {
   START_PRICE_DEFAULT,

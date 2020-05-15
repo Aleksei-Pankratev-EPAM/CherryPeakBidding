@@ -94,10 +94,6 @@ function TooLong(maxLength) {
     return `Поле должно быть не длиннее ${maxLength}.`;
 }
 
-function NaN() {
-    return 'Значение должно быть числом.';
-}
-
 function LessThan(value) {
     return `Значение должно быть больше, чем ${value}.`;
 }
