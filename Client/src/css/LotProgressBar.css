@@ -1,0 +1,32 @@
+.lot-progress {
+    display: -ms-flexbox;
+    display: flex;
+    height: 30px;
+    overflow: hidden;
+    font-size: 0.75rem;
+    background-color: #e9ecef;
+    border-radius: 0.25rem;
+    margin-top: 0.5em;
+}
+
+.lot-progress-bar {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+
+    color:#000;
+    text-align: center;
+    white-space: nowrap;
+    background-color: #a9e482;
+    transition: width 0.6s ease;
+    padding: 0 10px;
+}
+
+.lot-is-closed {
+    color: red;
+    font-weight: bold;
+    margin-top: 0.5em;
+}
