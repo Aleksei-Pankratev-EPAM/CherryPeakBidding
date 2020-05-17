@@ -1,4 +1,4 @@
-import { formatNumber } from '../formatting';
+import formatNumber from '../formatting';
 
 const MAX_TITLE_LENGTH = 50;
 const MAX_DESCRIPTION_LENGTH = 1000;
