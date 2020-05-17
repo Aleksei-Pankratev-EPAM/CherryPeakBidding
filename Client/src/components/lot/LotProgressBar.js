@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { formatDistance, addSeconds } from 'date-fns';
+
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 import '../../css/LotProgressBar.css';
@@ -43,34 +45,14 @@ class LotProgressBar extends Component {
     }
 
     getTimeStr = () => {
-        let seconds = this.state.secondsLeft;
-        let result = '';
+        const seconds = this.state.secondsLeft;
 
-        const secondsInDay = 86400;
-        const days = Math.floor(seconds / secondsInDay);
-        seconds -= days * secondsInDay;
-
-        if (days > 0) {
-            result += `${days} d. `;
+        if (seconds < 60) {
+            return `${seconds} sec.`;
         }
 
-        const secondsInHour = 3600;
-        const hours = Math.floor(seconds / secondsInHour);
-        seconds -= hours * secondsInHour;
-
-        if (hours > 0) {
-            result += `${hours} hrs. `;
-        }
-
-        const secondsInMinute = 60;
-        var minutes = Math.floor(seconds / secondsInMinute);
-        seconds -= minutes * secondsInMinute;
-
-        if (minutes > 0) {
-            result += `${minutes} min.`;
-        }
-
-        return `${result} ${seconds} sec.`;
+        const now = new Date();
+        return formatDistance(addSeconds(now, seconds), now);
     }
 
     render() {
@@ -79,7 +61,7 @@ class LotProgressBar extends Component {
 
         return (
             <span>
-                {this.state.secondsLeft ? progressBar : completed }
+                {this.state.secondsLeft ? progressBar : completed}
             </span>
         );
     }

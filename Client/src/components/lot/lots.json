@@ -75,5 +75,17 @@
         "maxOffer": 10869,
         "biddingTime": 95061,
         "timeToLive": 95061
+    },
+    {
+        "id": "7",
+        "title": "VeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongTitle",
+        "participationStatus": "creator",
+        "mainPhotoUrl": null,
+        "startPrice": 2233,
+        "minPriceStep": 800,
+        "bidsCount": 4,
+        "maxOffer": 3458869,
+        "biddingTime": 95061,
+        "timeToLive": 95061
     }
 ]

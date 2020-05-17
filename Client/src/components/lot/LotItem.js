@@ -5,7 +5,8 @@ import { ArrowUpRight } from 'react-bootstrap-icons';
 import '../../css/LotItem.css';
 import LotProgressBar from './LotProgressBar';
 import UserStatus from './UserStatus';
-import { CURRENCY } from "../Currency";
+import Money from '../Money';
+import Pluralizer from '../Pluralizer';
 
 function LotItem(props) {
   const {
@@ -21,9 +22,13 @@ function LotItem(props) {
   return (
     <div className="col-lg-3 col-md-6 mb-3">
       <div className="card shadow-sm h-100">
-        <Thumbnail src={mainPhotoUrl} alt={title} />
+        <div className='mx-auto mt-3'>
+          <Link to={getDetailsUrl(id)}>
+            <Thumbnail src={mainPhotoUrl} alt={title} />
+          </Link>
+        </div>
         <div className="card-body">
-          <h3 className="card-title"><Link to={`/lots/details/${id}`}>{title}</Link></h3>
+          <h3 className="card-title"><Link to={getDetailsUrl(id)}>{title}</Link></h3>
           <UserStatus value={participationStatus} />
           <div className="card-text">
             <PriceInfo item={props.item} />
@@ -36,29 +41,24 @@ function LotItem(props) {
   );
 }
 
-function getPriceStr(value) {
-  return `${value} ${CURRENCY}`;
-}
-
-function pluralize(value, plural = '', singular = '') {
-  const name = (value > 1 || value === 0) ? plural : singular;
-  return `${value} ${name}`;
+function getDetailsUrl(lotId) {
+  return `/lots/details/${lotId}`;
 }
 
 function StartPrice({ value }) {
-  return <span className="text-nowrap">{getPriceStr(value)}</span>;
+  return <span className="text-nowrap"><Money value={value} /></span>;
 }
 
 function MinPriceStep({ value }) {
-  return <span title="Min. price step">{getPriceStr(value)}</span>;
+  return <span title="Min. price step"><Money value={value} /></span>;
 }
 
 function MaxOffer({ value }) {
-  return <div className="max-lot-offer text-nowrap" title="Max offer">{getPriceStr(value)}</div>;
+  return <div className="max-lot-offer text-nowrap" title="Max offer"><Money value={value} /></div>;
 }
 
 function BidCount({ value }) {
-  return <div>{pluralize(value, 'bids', 'bid')}</div>;
+  return <div><Pluralizer value={value} plural='bids' singular='bid' /></div>
 }
 
 function PriceInfo(props) {
@@ -73,7 +73,7 @@ function PriceInfo(props) {
 }
 
 function Thumbnail({ src, alt }) {
-  return <img src={src ?? 'no-image.png'} alt={alt ?? 'no image'} className="img-thumbnail mx-auto mt-3" width="200px" height="200px" />
+  return <img src={src ?? 'no-image.png'} alt={alt ?? 'no image'} className="img-thumbnail" width="200px" height="200px" />
 }
 
 export default LotItem;
