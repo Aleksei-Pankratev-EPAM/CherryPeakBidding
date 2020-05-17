@@ -1,10 +1,10 @@
 import React from 'react';
-import { CURRENCY } from './Currency';
-import FormattedNumber from './FormattedNumber';
+import { CURRENCY } from '../constants/common';
+import formatNumber from '../utils/formatting';
 
 function Money({ value, valueClass }) {
     return <>
-        <span className={valueClass}><FormattedNumber value={value} /></span> {CURRENCY}
+        <span className={valueClass}>{formatNumber(value)}</span> {CURRENCY}
     </>;
 }
 

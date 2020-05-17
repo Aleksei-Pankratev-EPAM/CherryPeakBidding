@@ -6,7 +6,7 @@ import '../../css/LotItem.css';
 import LotProgressBar from './LotProgressBar';
 import UserStatus from './UserStatus';
 import Money from '../Money';
-import Pluralizer from '../Pluralizer';
+import { pluralize } from '../../utils/pluralization';
 
 function LotItem(props) {
   const {
@@ -58,7 +58,7 @@ function MaxOffer({ value }) {
 }
 
 function BidCount({ value }) {
-  return <div><Pluralizer value={value} plural='bids' singular='bid' /></div>
+  return <div>{pluralize(value, 'bids', 'bid')}</div>
 }
 
 function PriceInfo(props) {
