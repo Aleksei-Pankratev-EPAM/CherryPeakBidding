@@ -22,6 +22,14 @@ const HorizontalInput = ({ name, type, value, handleBlur, placeholder, addon, re
         />
     }
 
+    function getAddon() {
+        return (
+            <div className="input-group-append">
+                <span id={name + '-addon'} className='input-group-text'>{addon}</span>
+            </div>
+        )
+    }
+
     function getTextArea() {
         return (
             <textarea name={name} className={fieldClassName} rows="3" required={required}
@@ -32,13 +40,8 @@ const HorizontalInput = ({ name, type, value, handleBlur, placeholder, addon, re
 
     return (
         <div className='input-group mb-3'>
-            {useTextArea && getTextArea()}
-            {!useTextArea && getInput()}
-            {!useTextArea && addon && (
-                <div className="input-group-append">
-                    <span id={name + '-addon'} className='input-group-text'>{addon}</span>
-                </div>
-            )}
+            {useTextArea ? getTextArea(): getInput()}
+            {addon && getAddon()}
             <div className="invalid-tooltip">
                 {validationErrors}
             </div>
