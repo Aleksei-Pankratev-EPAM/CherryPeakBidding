@@ -11,13 +11,9 @@ export function createLot({ id, title, description, startPrice, priceStep, biddi
             description: description,
             startPrice: startPrice,
             priceStep: priceStep,
-            biddingTime: convertToSeconds(biddingTime)
+            biddingTime: biddingTime
         },
         onSuccess,
         onFailure
     );
-}
-
-function convertToSeconds(value) {
-    return value * 60;
 }

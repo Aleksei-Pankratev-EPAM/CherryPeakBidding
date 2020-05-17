@@ -1,26 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const HorizontalInput = ({ name, type, value, handleChange, placeholder, addon, required, validationErrors }) => {
-    const valid = !validationErrors || validationErrors.length === 0;
+const HorizontalInput = ({ name, type, value, handleBlur, placeholder, addon, required, validationErrors }) => {
+
+    const validated = validationErrors !== null;
+    const valid = validated && validationErrors.length === 0;
+    const isValidClass = validated && (valid ? 'is-valid' : 'is-invalid');
+    const fieldClassName = `form-control ${isValidClass}`;
+    const useTextArea = type === 'textarea';
+
+    function getInput() {
+        return <input
+            className={fieldClassName}
+            id={name}
+            name={name}
+            type={type}
+            value={value}
+            onBlur={handleBlur}
+            placeholder={placeholder}
+            required={required}
+        />
+    }
+
+    function getTextArea() {
+        return (
+            <textarea name={name} className={fieldClassName} rows="3" required={required}
+                value={value} onBlur={handleBlur} />
+        )
+    }
+
 
     return (
         <div className='input-group mb-3'>
-            <input
-                className={`form-control ${valid ? 'is-valid' : 'is-invalid'}`}
-                id={name}
-                name={name}
-                type={type}
-                value={value}
-                onChange={handleChange}
-                placeholder={placeholder}
-                required={required}
-            />
-            {addon &&
-                (<div className="input-group-append">
+            {useTextArea && getTextArea()}
+            {!useTextArea && getInput()}
+            {!useTextArea && addon && (
+                <div className="input-group-append">
                     <span id={name + '-addon'} className='input-group-text'>{addon}</span>
-                </div>)
-            }
+                </div>
+            )}
             <div className="invalid-tooltip">
                 {validationErrors}
             </div>
@@ -34,7 +52,7 @@ HorizontalInput.propTypes = {
     name: PropTypes.string,
     type: PropTypes.string,
     value: PropTypes.string,
-    handleChange: PropTypes.func,
+    handleBlur: PropTypes.func,
     placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     required: PropTypes.bool,
     validationErrors: PropTypes.arrayOf(PropTypes.string)

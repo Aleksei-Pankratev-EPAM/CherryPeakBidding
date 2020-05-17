@@ -4,7 +4,7 @@ import uuid from 'react-uuid';
 import {
   START_PRICE_DEFAULT,
   PRICE_STEP_DEFAULT,
-  BIDDING_TIME_DEFAULT,
+  BIDDING_TIME_MINUTES_DEFAULT
 } from '../../constants/NewLotDefaultValues';
 
 import {
@@ -18,6 +18,7 @@ import {
 import FieldRowContainer from './FieldRowContainer';
 import HorizontalInput from '../HorizontalInput';
 import { createLot } from '../../services/LotService';
+import {fromMinutesToSeconds } from '../../converters/TimeConverter';
 
 
 class AddLot extends Component {
@@ -28,30 +29,29 @@ class AddLot extends Component {
     this.state = {
       lot: {
         id: uuid(),
-        title: 'Name',
+        title: '',
         description: '',
         startPrice: START_PRICE_DEFAULT,
         priceStep: PRICE_STEP_DEFAULT,
-        biddingTime: BIDDING_TIME_DEFAULT,
+        biddingTime: BIDDING_TIME_MINUTES_DEFAULT,
       },
       formValid: false,
 
       formErrors: {
-        title: [],
-        description: [],
-        startPrice: [],
-        priceStep: [],
-        biddingTime: []
+        title: null,
+        description: null,
+        startPrice: null,
+        priceStep: null,
+        biddingTime: null
       },
     }
   }
 
-  componentDidMount() {
-    this.validateForm();
-  }
-
   handleSubmit = (event) => {
-    createLot(this.state.lot,
+    const lot = this.state.lot;
+    lot.biddingTime = fromMinutesToSeconds(lot.biddingTime);
+
+    createLot(lot,
       (result) => {
         alert('Lot successfully created');
         this.props.history.push(`/lots/details/${this.state.lot.id}`);
@@ -62,7 +62,7 @@ class AddLot extends Component {
     event.preventDefault();
   }
 
-  handleChange = (event) => {
+  handleBlur = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     const updatedLot = this.state.lot;
@@ -100,12 +100,6 @@ class AddLot extends Component {
     }, this.updateFormValidationState);
   }
 
-  validateForm = () => {
-    for (const fieldName in this.state.lot) {
-      this.validateField(fieldName, this.state.lot[fieldName]);
-    }
-  }
-
   isFormValid = () => {
     for (const key in this.state.formErrors) {
       if (this.state.formErrors[key]?.length > 0) {
@@ -119,10 +113,6 @@ class AddLot extends Component {
     this.setState({ formValid: this.isFormValid() });
   }
 
-  isFieldValid(errors) {
-    return !errors || errors.length === 0;
-  }
-
   renderFieldRow = (fieldName, title, type, details, placeholder, required, addon) => {
     const validationErrors = this.state.formErrors[fieldName];
 
@@ -132,7 +122,7 @@ class AddLot extends Component {
           name={fieldName}
           type={type}
           value={this.state.lot[title]}
-          handleChange={this.handleChange}
+          handleBlur={this.handleBlur}
           placeholder={placeholder}
           required={required}
           addon={addon}
@@ -148,21 +138,16 @@ class AddLot extends Component {
         <h1>New lot</h1>
 
         <form onSubmit={this.handleSubmit}>
-          {this.renderFieldRow('title', 'Lot name', 'text', 'E.x «chair»', null, true, null)}
 
-          <FieldRowContainer title='Description' name='description'>
-            <textarea name='description' className={`form-control ${this.isFieldValid(this.state.formErrors['description']) ? 'is-valid' : 'is-invalid'}`} rows="3"
-              value={this.state.lot.description} onChange={this.handleChange} />
-            <div className="invalid-tooltip">
-              {this.state.formErrors['description']}
-            </div>
-          </FieldRowContainer>
+          {this.renderFieldRow('title', 'Lot name', 'text', 'E.g. «chair»', null, true, null)}
+
+          {this.renderFieldRow('description', 'Description', 'textarea', null, null, false, null)}
 
           {this.renderFieldRow('startPrice', 'StartPrice', 'number', null, START_PRICE_DEFAULT, true, 'cc')}
 
           {this.renderFieldRow('priceStep', 'Min spice step', 'number', null, PRICE_STEP_DEFAULT, true, 'cc')}
 
-          {this.renderFieldRow('biddingTime', 'One round time', 'number', null, BIDDING_TIME_DEFAULT, true, 'min.')}
+          {this.renderFieldRow('biddingTime', 'One round time', 'number', null, BIDDING_TIME_MINUTES_DEFAULT, true, 'min.')}
 
           <div className="form-group row">
             <div className="col-sm-10">
