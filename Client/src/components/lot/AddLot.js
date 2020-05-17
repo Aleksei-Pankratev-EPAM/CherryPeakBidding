@@ -13,12 +13,13 @@ import {
   getStartPriceValidationErrors,
   getPriceStepValidationErrors,
   getBiddingTimeValidationErrors
-} from './AddLotFieldsValidation';
+} from '../../utils/validators/AddLotFieldsValidation';
 
 import FieldRowContainer from './FieldRowContainer';
 import HorizontalInput from '../HorizontalInput';
 import { createLot } from '../../services/LotService';
-import {fromMinutesToSeconds } from '../../converters/TimeConverter';
+import { fromMinutesToSeconds } from '../../converters/TimeConverter';
+import { CURRENCY } from '../../constants/common';
 
 
 class AddLot extends Component {
@@ -64,12 +65,14 @@ class AddLot extends Component {
 
   handleBlur = (event) => {
     const name = event.target.name;
-    const value = event.target.value;
+    this.validateField(name, this.state.lot[name]);
+  }
+
+  handleValueChange = (fieldName, value) => {
     const updatedLot = this.state.lot;
-    updatedLot[name] = value;
+    updatedLot[fieldName] = value;
     this.setState(
-      { lot: updatedLot },
-      () => { this.validateField(name, value) }
+      { lot: updatedLot }
     );
   }
 
@@ -121,8 +124,9 @@ class AddLot extends Component {
         <HorizontalInput
           name={fieldName}
           type={type}
-          value={this.state.lot[title]}
+          value={this.state.lot[fieldName]}
           handleBlur={this.handleBlur}
+          handleValueChange={this.handleValueChange}
           placeholder={placeholder}
           required={required}
           addon={addon}
@@ -143,9 +147,9 @@ class AddLot extends Component {
 
           {this.renderFieldRow('description', 'Description', 'textarea', null, null, false, null)}
 
-          {this.renderFieldRow('startPrice', 'StartPrice', 'number', null, START_PRICE_DEFAULT, true, 'cc')}
+          {this.renderFieldRow('startPrice', 'StartPrice', 'number', null, START_PRICE_DEFAULT, true, CURRENCY)}
 
-          {this.renderFieldRow('priceStep', 'Min spice step', 'number', null, PRICE_STEP_DEFAULT, true, 'cc')}
+          {this.renderFieldRow('priceStep', 'Min spice step', 'number', null, PRICE_STEP_DEFAULT, true, CURRENCY)}
 
           {this.renderFieldRow('biddingTime', 'One round time', 'number', null, BIDDING_TIME_MINUTES_DEFAULT, true, 'min.')}
 
