@@ -38,8 +38,6 @@ services:
 
   frontend:
     build: ./Client
-    ports:
-      - 127.0.0.1:8080:80
 
   rabbit:
     image: rabbitmq:3.7.26-management-alpine
