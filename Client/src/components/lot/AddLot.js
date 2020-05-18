@@ -13,12 +13,12 @@ import {
   getStartPriceValidationErrors,
   getPriceStepValidationErrors,
   getBiddingTimeValidationErrors
-} from '../../utils/validators/AddLotFieldsValidation';
+} from '../../utils/validators/addLotFieldsValidation';
 
 import FieldRowContainer from './FieldRowContainer';
 import HorizontalInput from '../HorizontalInput';
 import { createLot } from '../../services/LotService';
-import { fromMinutesToSeconds } from '../../converters/TimeConverter';
+import { fromMinutesToSeconds } from '../../utils/converters/timeConverter';
 import { CURRENCY } from '../../constants/common';
 
 
