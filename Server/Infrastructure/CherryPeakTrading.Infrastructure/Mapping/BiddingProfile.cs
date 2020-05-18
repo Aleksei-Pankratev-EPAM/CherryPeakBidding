@@ -13,7 +13,10 @@ namespace CherryPeakTrading.Infrastructure.Mapping
     {
         public BiddingProfile()
         {
-            CreateMap<LotsFilterViewModel, LotModel>();
+            CreateMap<LotViewModel, LotModel>().ForMember(x => x.CreatedAt, opt => opt.Ignore())
+                                               .ForMember(x => x.Creator, opt => opt.Ignore())
+                                               .ForMember(x => x.Status, opt => opt.Ignore())
+                                               .ForMember(x => x.TimeToLive, opt => opt.Ignore());
             CreateMap<PhotoViewModel, PhotoModel>();
             CreateMap<BidViewModel, BidModel>();
             CreateMap<UserViewModel, UserModel>();
@@ -27,8 +30,8 @@ namespace CherryPeakTrading.Infrastructure.Mapping
             CreateMap<UserModel, User>();
             CreateMap<RegionModel, Region>();
             CreateMap<PersonalAccountModel, PersonalAccount>();
-            CreateMap<Lot, LotModel>();
-            CreateMap<LotModel, LotsFilterViewModel>();
+            CreateMap<Lot, LotModel>().ForMember(x => x.TimeToLive, opt => opt.Ignore());
+            CreateMap<LotModel, LotViewModel>();
             CreateMap<User, UserModel>();
             CreateMap<Region, RegionModel>();
             CreateMap<PersonalAccount, PersonalAccountModel>();

@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CherryPeakTrading.API.Models.ViewModels;
+﻿using CherryPeakTrading.API.Models.ViewModels;
 using CherryPeakTrading.BL.Contracts;
 using CherryPeakTrading.BL.Contracts.Models;
-using CherryPeakTrading.BL.Contracts.Responses;
 using CherryPeakTrading.Infrastructure.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System;
+using System.Threading.Tasks;
 
 namespace CherryPeakTrading.API.Controllers
 {
@@ -17,7 +14,7 @@ namespace CherryPeakTrading.API.Controllers
     [ApiController]
     public class LotsController : ControllerBase
     {
-
+        private const string LotCreationError = "Lot wasn't created successfully";
         private readonly IMapperAdapter _mapperAdapter;
         private readonly ILotsLogic _lotsLogic;
 
@@ -34,15 +31,36 @@ namespace CherryPeakTrading.API.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<IActionResult> Post(LotsFilterViewModel filter)
+        public async Task<IActionResult> Post(LotViewModel lotToCreate)
         {
-            LotModel domainFilter = _mapperAdapter.Map<LotModel>(filter);
-            SaveLotResponse result = await _lotsLogic.CreateLot(domainFilter);
+            LotModel domainLot = _mapperAdapter.Map<LotModel>(lotToCreate);
 
-            if (!result.Success)
-                return BadRequest(result.Message);
+            LotModel result;
 
-            return Ok();
+            try
+            {
+                result = await _lotsLogic.CreateLot(domainLot);
+            }
+            catch(Exception ex)
+            {
+                Log.Error($"{LotCreationError}. Error: {ex.Message}");
+                return BadRequest($"{LotCreationError}");
+            }
+
+            var  createdLot = _mapperAdapter.Map<LotViewModel>(result);
+
+            return CreatedAtRoute(nameof(Get), new { id = createdLot.Id }, createdLot);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public IActionResult Get(int id)
+        {
+            return Ok(";)");
         }
     }
 }

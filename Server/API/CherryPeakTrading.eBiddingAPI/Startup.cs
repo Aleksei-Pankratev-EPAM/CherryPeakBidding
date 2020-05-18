@@ -1,7 +1,7 @@
 using CherryPeakTrading.DI;
-using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using CherryPeakTrading.DI.Logging;
 using CherryPeakTrading.DI.Messaging;
+using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

@@ -44,10 +44,7 @@ namespace CherryPeakTrading.Data.Repository
             return await context.Set<TEntity>().FindAsync(id);
         }
 
-        public Task<IList<TEntity>> Get(TSpecification criteria)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract Task<IList<TEntity>> Get(TSpecification criteria);
 
         public async Task<TEntity> Update(TEntity entity)
         {

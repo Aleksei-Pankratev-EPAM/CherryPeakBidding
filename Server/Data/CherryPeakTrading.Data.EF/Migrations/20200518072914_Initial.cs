@@ -52,7 +52,6 @@ namespace CherryPeakTrading.Data.EF.Migrations
                     StartPrice = table.Column<decimal>(nullable: false),
                     PriceStep = table.Column<decimal>(nullable: false),
                     CreatorId = table.Column<long>(nullable: false),
-                    TimeToLive = table.Column<long>(nullable: false),
                     BiddingTime = table.Column<long>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedAt = table.Column<DateTime>(nullable: false)
@@ -123,7 +122,7 @@ namespace CherryPeakTrading.Data.EF.Migrations
                     Id = table.Column<long>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Url = table.Column<string>(nullable: false),
-                    LotId = table.Column<Guid>(nullable: false)
+                    LotId = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -133,7 +132,7 @@ namespace CherryPeakTrading.Data.EF.Migrations
                         column: x => x.LotId,
                         principalTable: "Lots",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(

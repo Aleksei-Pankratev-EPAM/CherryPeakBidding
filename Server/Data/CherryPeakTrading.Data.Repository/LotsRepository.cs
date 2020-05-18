@@ -13,7 +13,7 @@ namespace CherryPeakTrading.Data.Repository
         {
         }
 
-        public Task<IList<Lot>> Get(LotsSpecification criteria)
+        public override Task<IList<Lot>> Get(LotsSpecification criteria)
         {
             throw new System.NotImplementedException();
         }

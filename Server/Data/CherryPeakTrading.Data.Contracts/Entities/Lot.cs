@@ -13,7 +13,7 @@ namespace CherryPeakTrading.Data.Contracts.Entities
 
         public string Description { get; set; } = string.Empty;
 
-        public List<Photo> Photos { get; set; }
+        public List<Photo> Photos { get; set; } = new List<Photo>();
 
         public decimal StartPrice { get; set; }
 
@@ -23,8 +23,6 @@ namespace CherryPeakTrading.Data.Contracts.Entities
 
         [ForeignKey(nameof(CreatorId))]
         public User Creator { get; set; }
-
-        public uint TimeToLive { get; set; }
 
         public uint BiddingTime { get; set; }
 

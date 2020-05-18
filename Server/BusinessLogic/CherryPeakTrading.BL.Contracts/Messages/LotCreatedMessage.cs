@@ -1,7 +1,9 @@
-﻿namespace CherryPeakTrading.BL.Contracts.Messages
+﻿using System;
+
+namespace CherryPeakTrading.BL.Contracts.Messages
 {
     public class LotCreatedMessage
     {
-        //TODO Add necessary properties
+        public Guid LotId { get; set; }
     }
 }

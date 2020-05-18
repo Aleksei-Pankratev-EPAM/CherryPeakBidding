@@ -1,13 +1,10 @@
-﻿using CherryPeakTrading.API.Models.Responses;
-using CherryPeakTrading.BL.Contracts;
+﻿using CherryPeakTrading.BL.Contracts;
+using CherryPeakTrading.BL.Contracts.Messages;
 using CherryPeakTrading.BL.Contracts.Models;
-using CherryPeakTrading.BL.Contracts.Responses;
 using CherryPeakTrading.Data.Contracts;
-using CherryPeakTrading.Data.Contracts.Entities;
 using CherryPeakTrading.Infrastructure.Contracts;
+using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Lot = CherryPeakTrading.Data.Contracts.Entities.Lot;
 
@@ -17,26 +14,28 @@ namespace CherryPeakTrading.BL
     {
         private IMapperAdapter _mapperAdapter;
         private ILotRepository _lotRepository;
+        IMessagePublisher<LotCreatedMessage> _messagePublisher;
 
-        public LotsLogic(IMapperAdapter mapperAdapter, ILotRepository lotRepository)
+        public LotsLogic(IMapperAdapter mapperAdapter, ILotRepository lotRepository, IMessagePublisher<LotCreatedMessage> messagePublisher)
         {
             _mapperAdapter = mapperAdapter;
             _lotRepository = lotRepository;
+            _messagePublisher = messagePublisher;
         }
-        public async Task<SaveLotResponse> CreateLot(LotModel filter)
+        public async Task<LotModel> CreateLot(LotModel filter)
         {
             Data.Contracts.Entities.Lot lot = _mapperAdapter.Map<Lot>(filter);
-            Lot result = await _lotRepository.Add(lot);
 
-            if (result == null)
-            {
-                return new SaveLotResponse("Lot saving wasn't successful");
-            }
-            else
-            {
-                var savedLot = _mapperAdapter.Map<LotModel>(result);
-                return new SaveLotResponse(savedLot);
-            }
+            Lot result = await _lotRepository.Add(lot);
+            SentMessageToQueue(result.Id);
+
+            var savedLot = _mapperAdapter.Map<LotModel>(result);
+            return savedLot;
+        }
+
+        private void SentMessageToQueue(Guid lotId)
+        {
+            _messagePublisher.Publish(new LotCreatedMessage { LotId = lotId });
         }
     }
 }

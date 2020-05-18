@@ -16,6 +16,6 @@ namespace CherryPeakTrading.API.Models.ViewModels
 
         public decimal Offer { get; set; }
 
-        public LotsFilterViewModel Lot { get; set; }
+        public LotViewModel Lot { get; set; }
     }
 }

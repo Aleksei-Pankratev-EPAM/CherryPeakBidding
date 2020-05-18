@@ -75,9 +75,6 @@ namespace CherryPeakTrading.Data.EF.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("integer");
 
-                    b.Property<long>("TimeToLive")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("text");
@@ -117,7 +114,7 @@ namespace CherryPeakTrading.Data.EF.Migrations
                         .HasColumnType("bigint")
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
-                    b.Property<Guid>("LotId")
+                    b.Property<Guid?>("LotId")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Url")
@@ -207,11 +204,9 @@ namespace CherryPeakTrading.Data.EF.Migrations
 
             modelBuilder.Entity("CherryPeakTrading.Data.Contracts.Entities.Photo", b =>
                 {
-                    b.HasOne("CherryPeakTrading.Data.Contracts.Entities.Lot", "Lot")
+                    b.HasOne("CherryPeakTrading.Data.Contracts.Entities.Lot", null)
                         .WithMany("Photos")
-                        .HasForeignKey("LotId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LotId");
                 });
 
             modelBuilder.Entity("CherryPeakTrading.Data.Contracts.Entities.User", b =>
