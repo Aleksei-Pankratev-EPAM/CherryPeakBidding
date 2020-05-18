@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using CherryPeakTrading.API.Models.ViewModels;
-using CherryPeakTrading.BL;
-using CherryPeakTrading.BL.Contracts;
 using CherryPeakTrading.BL.Contracts.Models;
-using CherryPeakTrading.Data.Contracts;
 using CherryPeakTrading.Data.Contracts.Entities;
-using CherryPeakTrading.Data.Repository;
 
 namespace CherryPeakTrading.Infrastructure.Mapping
 {
