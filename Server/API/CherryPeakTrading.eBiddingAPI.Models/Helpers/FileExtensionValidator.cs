@@ -1,10 +1,10 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
-namespace CherryPeakTrading.API.Models
+namespace CherryPeakTrading.API.Models.Helpers
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class FileExtensionsValidator : ValidationAttribute

@@ -1,12 +1,16 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CherryPeakTrading.Data.Contracts.Entities
+namespace CherryPeakTrading.Data.EF.Entities
 {
     public class Photo
     {
         public long Id { get; set; }
 
-        public string Url { get; set; } = string.Empty;
+        public string Url { get; set; }
+
+        public Guid LotId { get; set; }
+
+        public DateTime CreatedAt { get; set; }
     }
 }

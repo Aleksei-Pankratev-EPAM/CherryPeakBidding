@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using CherryPeakTrading.API.Models.ViewModels;
+﻿using CherryPeakTrading.API.Models.ViewModels;
 using CherryPeakTrading.BL.Contracts;
 using CherryPeakTrading.BL.Contracts.Models;
 using CherryPeakTrading.Infrastructure.Contracts;
@@ -10,6 +6,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CherryPeakTrading.API.Controllers
 {

@@ -12,6 +12,6 @@
 
         public RegionModel Region { get; set; } = new RegionModel();
 
-        public PersonalAccountModel PersonalAccount { get; set; }
+        public PersonalAccountModel PersonalAccount { get; set; } = new PersonalAccountModel();
     }
 }

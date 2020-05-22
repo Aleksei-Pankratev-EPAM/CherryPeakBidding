@@ -1,13 +1,11 @@
-﻿using CherryPeakTrading.BL;
+﻿using CherryPeakTrading.API.Models;
+using CherryPeakTrading.BL;
 using CherryPeakTrading.BL.Contracts;
 using CherryPeakTrading.Data.Contracts;
+using CherryPeakTrading.Data.Contracts.Specifications;
 using CherryPeakTrading.Data.EF;
-using CherryPeakTrading.Data.Repository;
-using CherryPeakTrading.Infrastructure.Contracts;
-using CherryPeakTrading.Infrastructure.Mapping;
 using CherryPeakTrading.Data.EF.Entities;
 using CherryPeakTrading.Data.Repository;
-using CherryPeakTrading.Data.Specifications;
 using CherryPeakTrading.Infrastructure.Contracts;
 using CherryPeakTrading.Infrastructure.FileStorage;
 using CherryPeakTrading.Infrastructure.Mapping;
@@ -30,9 +28,7 @@ namespace CherryPeakTrading.DI
             services.AddScoped<ILotsLogic, LotsLogic>();
             services.AddTransient<IFileStorage, BlobStorage>();
             services.AddTransient<IPhotosLogic, PhotosLogic>();
-            services.AddTransient<ILotsLogic, LotsLogic>();
             services.AddTransient<IRepository<Photo, PhotosSpecification>, PhotosRepository>();
-            services.AddTransient<IMapperAdapter, BiddingMapper>();
         }
     }
 }

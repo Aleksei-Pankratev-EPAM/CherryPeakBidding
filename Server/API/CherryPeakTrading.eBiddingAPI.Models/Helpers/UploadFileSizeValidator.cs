@@ -1,14 +1,10 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace CherryPeakTrading.API.Models
+namespace CherryPeakTrading.API.Models.Helpers
 {
-
-    [AttributeUsage(
-        validOn: AttributeTargets.Field | AttributeTargets.Property,
-        AllowMultiple = false,
-        Inherited = true)]
+    [AttributeUsage(validOn: AttributeTargets.Field | AttributeTargets.Property, AllowMultiple = false, Inherited = true)]
     public class UploadFileSizeValidator
         : ValidationAttribute
     {
@@ -19,12 +15,11 @@ namespace CherryPeakTrading.API.Models
 
         public long SizeInBytes { get; private set; }
 
-
-        /// <summary>  
+        /// <summary>
         ///     Validates the specified value with respect to the current validation attribute
-        /// </summary>  
-        /// <param name="value">the value to validate</param>  
-        /// <returns>Returns - true to specify size is okay.</returns> 
+        /// </summary>
+        /// <param name="value">the value to validate</param>
+        /// <returns>Returns - true to specify size is okay.</returns>
         public override bool IsValid(object value)
         {
             bool isValid = false;
@@ -36,6 +31,5 @@ namespace CherryPeakTrading.API.Models
 
             return isValid;
         }
-
     }
 }

@@ -1,9 +1,6 @@
 ﻿using CherryPeakTrading.Data.EF.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace CherryPeakTrading.Data.Specifications
+namespace CherryPeakTrading.Data.Contracts.Specifications
 {
     public class PhotosSpecification : BaseSpecification<Photo>
     {

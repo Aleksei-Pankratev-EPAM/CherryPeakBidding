@@ -1,9 +1,8 @@
-﻿using CherryPeakTrading.Data.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace CherryPeakTrading.Data.Specifications
+namespace CherryPeakTrading.Data.Contracts.Specifications
 {
     public class BaseSpecification<T> : ISpecification<T>
     {

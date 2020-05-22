@@ -1,4 +1,5 @@
 ﻿using CherryPeakTrading.Data.Contracts.Entities;
+using CherryPeakTrading.Data.EF.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CherryPeakTrading.Data.EF

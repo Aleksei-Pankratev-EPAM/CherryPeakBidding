@@ -12,7 +12,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CherryPeakTrading.Data.Contracts\CherryPeakTrading.Data.Contracts.csproj" />
     <ProjectReference Include="..\CherryPeakTrading.Data.EF\CherryPeakTrading.Data.EF.csproj" />
-    <ProjectReference Include="..\CherryPeakTrading.Data.Specifications\CherryPeakTrading.Data.Specifications.csproj" />
   </ItemGroup>
 
 </Project>
