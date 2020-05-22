@@ -3,8 +3,8 @@ using CherryPeakTrading.Infrastructure.Contracts;
 
 namespace CherryPeakTrading.Infrastructure.Mapping
 {
-	public class BiddingMapperAdapter : IMapperAdapter
-	{
+    public class BiddingMapperAdapter : IMapperAdapter
+    {
         public BiddingMapperAdapter()
         {
             var mapperConfiguration = new MapperConfiguration(configuration =>

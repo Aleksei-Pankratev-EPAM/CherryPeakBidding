@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace CherryPeakTrading.BL.Contracts.Models
+﻿namespace CherryPeakTrading.BL.Contracts.Models
 {
     public class PersonalAccountModel
     {

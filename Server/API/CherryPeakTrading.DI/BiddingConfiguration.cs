@@ -1,5 +1,4 @@
-﻿using CherryPeakTrading.API.Models;
-using CherryPeakTrading.BL;
+﻿using CherryPeakTrading.BL;
 using CherryPeakTrading.BL.Contracts;
 using CherryPeakTrading.Data.Contracts;
 using CherryPeakTrading.Data.Contracts.Specifications;

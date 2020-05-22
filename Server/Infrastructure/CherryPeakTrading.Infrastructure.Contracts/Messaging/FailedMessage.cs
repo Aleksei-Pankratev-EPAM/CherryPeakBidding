@@ -4,7 +4,7 @@
     /// A container class for messages failed to be consumed.
     /// </summary>
     /// <typeparam name="T">Type of the original message</typeparam>
-    public class FailedMessage<T> where T: class
+    public class FailedMessage<T> where T : class
     {
         public string OriginalId { get; }
 

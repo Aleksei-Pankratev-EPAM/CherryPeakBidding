@@ -41,13 +41,13 @@ namespace CherryPeakTrading.API.Controllers
             {
                 result = await _lotsLogic.CreateLot(domainLot);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Log.Error($"{LotCreationError}. Error: {ex.Message}");
                 return BadRequest($"{LotCreationError}");
             }
 
-            var  createdLot = _mapperAdapter.Map<LotViewModel>(result);
+            var createdLot = _mapperAdapter.Map<LotViewModel>(result);
 
             return CreatedAtRoute(nameof(Get), new { id = createdLot.Id }, createdLot);
         }

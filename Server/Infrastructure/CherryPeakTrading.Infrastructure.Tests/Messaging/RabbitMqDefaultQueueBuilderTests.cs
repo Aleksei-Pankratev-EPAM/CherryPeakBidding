@@ -1,5 +1,5 @@
-﻿using CherryPeakTrading.Infrastructure.Messaging;
-using CherryPeakTrading.Infrastructure.Contracts.Messaging;
+﻿using CherryPeakTrading.Infrastructure.Contracts.Messaging;
+using CherryPeakTrading.Infrastructure.Messaging;
 using NUnit.Framework;
 
 namespace CherryPeakTrading.Infrastructure.Tests.Messaging
@@ -33,6 +33,7 @@ namespace CherryPeakTrading.Infrastructure.Tests.Messaging
             Assert.AreEqual("FailedMessage<CherryPeakTrading.Infrastructure.Tests.Messaging.TestMessage>", queueName);
         }
     }
+
     public class TestMessage
     {
         public string Name { get; set; } = "Test";

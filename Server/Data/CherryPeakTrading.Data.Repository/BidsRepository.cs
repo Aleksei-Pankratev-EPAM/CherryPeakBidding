@@ -1,9 +1,9 @@
 ﻿using CherryPeakTrading.Data.Contracts;
-using CherryPeakTrading.Data.EF;
 using CherryPeakTrading.Data.Contracts.Entities;
 using CherryPeakTrading.Data.Contracts.Specifications;
-using System.Threading.Tasks;
+using CherryPeakTrading.Data.EF;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CherryPeakTrading.Data.Repository
 {

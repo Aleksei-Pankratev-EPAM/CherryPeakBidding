@@ -28,7 +28,7 @@ namespace CherryPeakTrading.Infrastructure.Messaging
                 var originalMethodType = typeof(T).GenericTypeArguments.Single();
                 return $"FailedMessage<{GetClassName(originalMethodType)}>";
             }
-            
+
             return GetClassName(typeof(T));
         }
 

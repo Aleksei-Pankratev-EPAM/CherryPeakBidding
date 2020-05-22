@@ -1,6 +1,6 @@
-using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using CherryPeakTrading.DI.Logging;
 using CherryPeakTrading.DI.Messaging;
+using CherryPeakTrading.Infrastructure.Contracts.Messaging;
 using CherryPeakTrading.WorkerService.Consumers;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

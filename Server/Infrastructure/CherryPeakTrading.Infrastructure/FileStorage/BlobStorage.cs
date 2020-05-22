@@ -1,14 +1,8 @@
-﻿using CherryPeakTrading.API.Models;
-using CherryPeakTrading.Infrastructure.Contracts;
-using Microsoft.Azure.Storage;
+﻿using CherryPeakTrading.Infrastructure.Contracts;
 using Microsoft.Azure.Storage.Blob;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CherryPeakTrading.Infrastructure.FileStorage
 {
