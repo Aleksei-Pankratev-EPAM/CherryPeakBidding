@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CherryPeakTrading.BusinessLogic.Entities\CherryPeakTrading.BL.Contracts.csproj" />
-    <ProjectReference Include="..\CherryPeakTrading.DI\CherryPeakTrading.DI.csproj" />
+    <ProjectReference Include="..\API\CherryPeakTrading.DI\CherryPeakTrading.DI.csproj" />
+    <ProjectReference Include="..\BusinessLogic\CherryPeakTrading.BL.Contracts\CherryPeakTrading.BL.Contracts.csproj" />
   </ItemGroup>
 </Project>
