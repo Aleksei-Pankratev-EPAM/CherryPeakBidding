@@ -202,13 +202,6 @@ namespace CherryPeakTrading.Data.EF.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("CherryPeakTrading.Data.Contracts.Entities.Photo", b =>
-                {
-                    b.HasOne("CherryPeakTrading.Data.Contracts.Entities.Lot", null)
-                        .WithMany("Photos")
-                        .HasForeignKey("LotId");
-                });
-
             modelBuilder.Entity("CherryPeakTrading.Data.Contracts.Entities.User", b =>
                 {
                     b.HasOne("CherryPeakTrading.Data.Contracts.Entities.Region", "Region")

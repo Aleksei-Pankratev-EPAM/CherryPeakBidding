@@ -6,6 +6,10 @@ namespace CherryPeakTrading.BL.Contracts.Models
     {
         public long Id { get; set; }
 
-        public string Url { get; set; } = string.Empty;
+        public string? Url { get; set; }
+
+        public Guid LotId { get; set; }
+
+        public DateTime CreatedAt { get; set; }
     }
 }

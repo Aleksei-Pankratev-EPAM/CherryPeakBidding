@@ -2,6 +2,7 @@
 using CherryPeakTrading.API.Models.ViewModels;
 using CherryPeakTrading.BL.Contracts.Models;
 using CherryPeakTrading.Data.Contracts.Entities;
+using CherryPeakTrading.Data.EF.Entities;
 
 namespace CherryPeakTrading.Infrastructure.Mapping
 {

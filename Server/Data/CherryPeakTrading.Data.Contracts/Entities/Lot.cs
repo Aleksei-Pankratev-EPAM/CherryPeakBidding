@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CherryPeakTrading.Data.EF.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -21,7 +22,7 @@ namespace CherryPeakTrading.Data.Contracts.Entities
         public long CreatorId { get; set; }
 
         [ForeignKey(nameof(CreatorId))]
-        public User Creator { get; set; }
+        public User Creator { get; set; } = null!;
 
         public uint BiddingTime { get; set; }
 
@@ -29,6 +30,6 @@ namespace CherryPeakTrading.Data.Contracts.Entities
 
         public DateTime CreatedAt { get; set; }
 
-        public List<Bid> Bids { get; set; }
+        public List<Bid> Bids { get; set; } = new List<Bid>();
     }
 }

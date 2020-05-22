@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CherryPeakTrading.API.Models.ViewModels
+﻿namespace CherryPeakTrading.API.Models.ViewModels
 {
     public class PhotoViewModel
     {

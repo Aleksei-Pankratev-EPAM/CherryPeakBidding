@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace CherryPeakTrading.API.Models.ViewModels
+﻿namespace CherryPeakTrading.API.Models.ViewModels
 {
     public class UserViewModel
     {

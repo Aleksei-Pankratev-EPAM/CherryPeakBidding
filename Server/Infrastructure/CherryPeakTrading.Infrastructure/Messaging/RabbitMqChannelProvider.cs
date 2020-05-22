@@ -1,5 +1,4 @@
-﻿using CherryPeakTrading.Infrastructure.Contracts.Messaging;
-using RabbitMQ.Client;
+﻿using RabbitMQ.Client;
 
 namespace CherryPeakTrading.Infrastructure.Messaging
 {

@@ -14,7 +14,7 @@ namespace CherryPeakTrading.BL
     {
         private IMapperAdapter _mapperAdapter;
         private ILotRepository _lotRepository;
-        IMessagePublisher<LotCreatedMessage> _messagePublisher;
+        private IMessagePublisher<LotCreatedMessage> _messagePublisher;
 
         public LotsLogic(IMapperAdapter mapperAdapter, ILotRepository lotRepository, IMessagePublisher<LotCreatedMessage> messagePublisher)
         {
@@ -22,6 +22,7 @@ namespace CherryPeakTrading.BL
             _lotRepository = lotRepository;
             _messagePublisher = messagePublisher;
         }
+
         public async Task<LotModel> CreateLot(LotModel filter)
         {
             Data.Contracts.Entities.Lot lot = _mapperAdapter.Map<Lot>(filter);

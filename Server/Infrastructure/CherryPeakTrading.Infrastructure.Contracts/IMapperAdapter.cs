@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace CherryPeakTrading.Infrastructure.Contracts
+﻿namespace CherryPeakTrading.Infrastructure.Contracts
 {
-	public interface IMapperAdapter
-	{
+    public interface IMapperAdapter
+    {
         TDestination Map<TDestination>(object source)
             where TDestination : class;
 
@@ -12,4 +10,3 @@ namespace CherryPeakTrading.Infrastructure.Contracts
             where TDestination : class;
     }
 }
-

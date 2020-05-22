@@ -15,7 +15,6 @@ namespace CherryPeakTrading.Infrastructure.Messaging
         private readonly IRabbitMqQueueBuilder<T> _queueBuilder;
         private readonly bool _sendToFailedQueue;
         private EventingBasicConsumer? _basicConsumer;
-        
 
         protected RabbitMqMessageConsumerBase(
             IRabbitMqChannelProvider rabbitMqChannelProvider,
