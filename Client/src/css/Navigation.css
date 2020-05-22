@@ -1,0 +1,30 @@
+.navigation {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation li {
+    margin: 0.4em 0;
+    text-align: center;
+}
+
+.navigation li a:link,
+.navigation li a:visited {
+    display: inline-block;
+    width: 70%;
+    font-size: 105%;
+    color: #333;
+    border: 1px solid #f5f5f5;
+}
+
+.navigation li a:hover {
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid #dddfe2;
+    background-color: #fff;
+}
+
+.navigation li a:link.active-menu-item,
+.navigation li a:visited.active-menu-item {
+    font-weight: bold;
+}

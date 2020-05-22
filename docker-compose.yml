@@ -1,0 +1,91 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:1.17.10-alpine
+    depends_on: 
+      - backend
+      - frontend
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+
+  backend:
+    build:
+      context: ./Server
+      dockerfile: API/CherryPeakTrading.eBiddingAPI/Dockerfile
+    depends_on: 
+      - rabbit
+      - postgres
+      - elasticsearch
+    ports:
+      - 127.0.0.1:9080:80
+    environment:
+      - ConnectionStrings:Elasticsearch=http://elasticsearch:9200
+      - ConnectionStrings:BiddingDB=server=postgres;Port=5432;database=BiddingDB;User ID=postgres;password=postgres;
+      - Messaging:HostName=rabbit
+
+  worker:
+    build:
+      context: ./Server
+      dockerfile: CherryPeakTrading.WorkerService/Dockerfile
+    depends_on: 
+      - rabbit
+      - elasticsearch
+    environment:
+      - ConnectionStrings:Elasticsearch=http://elasticsearch:9200
+      - Messaging:HostName=rabbit
+
+  frontend:
+    build: ./Client
+
+  rabbit:
+    image: rabbitmq:3.7.26-management-alpine
+    hostname: app-rabbitmq
+    ports:
+      - 127.0.0.1:5672:5672
+      - 127.0.0.1:15672:15672
+    volumes:
+      - rabbitdata:/var/lib/rabbitmq/mnesia/rabbit@app-rabbitmq:cached
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: rabbitmq
+      RABBITMQ_DEFAULT_VHOST: /
+
+  postgres:
+    image: "postgres:12.2-alpine"
+    restart: always
+    stop_grace_period: 1m
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: postgres
+
+  elasticsearch:
+    image: elasticsearch:7.6.2
+    ports:
+      - 127.0.0.1:9200:9200
+      - 127.0.0.1:9300:9300
+    volumes:
+      - elasticdata:/usr/share/elasticsearch/data
+    environment:
+      - node.name=es_dev
+      - cluster.name=cherry-peak-es
+      - cluster.initial_master_nodes=es_dev
+  
+  kibana:
+    image: kibana:7.6.2
+    depends_on:
+      - elasticsearch
+    ports:
+      - 5601:5601
+
+volumes:
+  pgdata:
+    driver: local
+  rabbitdata:
+    driver: local
+  elasticdata:
+    driver: local

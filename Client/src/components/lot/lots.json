@@ -1,0 +1,91 @@
+[
+    {
+        "id": "1",
+        "title": "Apple",
+        "participationStatus": "viewed",
+        "mainPhotoUrl": null,
+        "startPrice": 50,
+        "minPriceStep": 7,
+        "bidsCount": 23,
+        "maxOffer": 125,
+        "biddingTime": 10,
+        "timeToLive": 5
+    },
+
+    {
+        "id": "2",
+        "title": "Lime",
+        "participationStatus": "participated",
+        "mainPhotoUrl": null,
+        "startPrice": 78,
+        "minPriceStep": 12,
+        "bidsCount": 1,
+        "maxOffer": 197,
+        "biddingTime": 60,
+        "timeToLive": 9
+    },
+
+    {
+        "id": "3",
+        "title": "Blueberries",
+        "participationStatus": null,
+        "mainPhotoUrl": null,
+        "startPrice": 567,
+        "minPriceStep": 50,
+        "bidsCount": 0,
+        "maxOffer": 567,
+        "biddingTime": 1544,
+        "timeToLive": 1544
+    },
+
+    {
+        "id": "4",
+        "title": "Gooseberries",
+        "participationStatus": "winner",
+        "mainPhotoUrl": null,
+        "startPrice": 1234,
+        "minPriceStep": 56,
+        "bidsCount": 47,
+        "maxOffer": 3333,
+        "biddingTime": 60,
+        "timeToLive": 55
+    },
+
+    {
+        "id": "5",
+        "title": "Grapes",
+        "participationStatus": "leader",
+        "mainPhotoUrl": null,
+        "startPrice": 1010,
+        "minPriceStep": 50,
+        "bidsCount": 8,
+        "maxOffer": 2030,
+        "biddingTime": 120,
+        "timeToLive": 120
+    },
+
+    {
+        "id": "6",
+        "title": "Kiwi",
+        "participationStatus": "creator",
+        "mainPhotoUrl": null,
+        "startPrice": 4567,
+        "minPriceStep": 500,
+        "bidsCount": 4,
+        "maxOffer": 10869,
+        "biddingTime": 95061,
+        "timeToLive": 95061
+    },
+    {
+        "id": "7",
+        "title": "VeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryLongTitle",
+        "participationStatus": "creator",
+        "mainPhotoUrl": null,
+        "startPrice": 2233,
+        "minPriceStep": 800,
+        "bidsCount": 4,
+        "maxOffer": 3458869,
+        "biddingTime": 95061,
+        "timeToLive": 95061
+    }
+]
